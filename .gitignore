@@ -1,0 +1,6 @@
+postgres-data/
+.env
+mooney/static/
+mooney/media/
+docs/base
+docs/base/

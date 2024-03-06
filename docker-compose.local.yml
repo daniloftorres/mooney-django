@@ -1,0 +1,43 @@
+version: '3'
+
+services:
+  django:
+    build:
+      context: .
+      dockerfile: ./config/local/Dockerfile
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgres
+    env_file:
+      - ./config/local/.env.local
+    volumes:
+      - .:/app
+  
+  postgres:
+    image: postgres:14.1-alpine
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
+      - ./config/local/postgresql/my-postgresql.conf:/etc/postgresql/postgresql.conf
+      - ./config/local/postgresql/my-pg_hba.conf:/etc/postgresql/pg_hba.conf
+    restart: always
+    env_file:
+      - ./config/local/.env.local
+    ports:
+      - "5432:5432"
+
+
+  nginx:
+    image: nginx:latest
+    ports:
+      - "80:80"
+    volumes:
+      - ./mooney/static/:/app/mooney/static/
+      - ./config/local/nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./config/local/nginx/conf.d:/etc/nginx/conf.
+    depends_on:
+      - django
+
+volumes:
+  postgres_data:
+  static:
