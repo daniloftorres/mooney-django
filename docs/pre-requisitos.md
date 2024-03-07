@@ -8,25 +8,55 @@
 
 ## Instalação e Configuração do Git
 
-```bash
+    -   Configuração inicial para uso de ssh para conexão
 
-    git init
-    git config --local user.name "Danilo Torres"
-    git config --local user.email daniloftorres@gmail.com
-    git remote -v
-    git remote add origin git@github.com:daniloftorres/mooney.git
-```
+    ```bash
 
---git allow ssh
+        git init
+        git config --local user.name "Danilo Torres"
+        git config --local user.email daniloftorres@gmail.com
+        git remote -v
+        git remote set-url origin git@github-daniloftorres:daniloftorres/mooney.github.io.git
+    ```
 
-```bash
+    -   Arquivo `config`
 
-    nano ~/.ssh/config
-    Host github.com
-    &nbsp;User git
-    &nbsp;Hostname github.com
-    &nbsp;IdentityFile ~/.ssh/danilotorres3030
-```
+    ```bash
+        # Configuração para a conta daniloftorres
+        Host github-daniloftorres
+        HostName github.com
+        User git
+        IdentityFile ~/.ssh/id_rsa
+        IdentitiesOnly yes
+    ```
+
+    Check permissão e dono do arquivo config
+    - As permissões devem ser -rw-------
+    - O config precisa estar como dono o usuario local
+    ```bash
+        ls -lha
+        -rw-------  1 danilo danilo 1,2K mar  6 12:00 config
+        drwxrwxr-x  2 danilo danilo 4,0K mar 13  2023 danilo
+        -rw-------  1 danilo danilo 2,6K dez  4  2020 danilotorres3030
+        -rw-rw-r--  1 danilo danilo  577 dez  4  2020 danilotorres3030.pub
+    ```
+
+    Ajustando caso necessário
+    ```bash
+    sudo chown danilo:danilo ~/.ssh/config
+    ```
+
+    Mudando permissão caso necessario:
+
+    ```bash
+    chmod 600 ~/.ssh/config
+    ```
+
+    Teste a conexão
+
+    ```bash
+        ssh -T git@github-daniloftorres
+    ```
 
 ## Instalação do Python
 

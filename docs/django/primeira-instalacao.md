@@ -9,13 +9,20 @@
 2. Iniciando o Projeto Localmente
 
    ```bash
-   django-admin startproject mooney .
+      django-admin startproject mooney .
    ```
 
 3. Criando o Primeiro APP
 
    ```bash
-       python manage.py startapp cliente
+      mkdir -p ./apps/erp/lancamento
+      python manage.py startapp lancamento ./apps/erp/lancamento
+      sudo chown -R danilo:danilo ./apps/erp/pagamento
+
+      mkdir -p ./apps/erp/transaction
+      python manage.py startapp transaction ./apps/erp/transaction
+      sudo chown -R danilo:danilo ./apps/erp/transaction
+
    ```
 
    ```bash

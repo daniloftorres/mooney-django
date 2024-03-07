@@ -33,6 +33,8 @@ class CustomUser(AbstractUser, models_base.TimeStampedModel, models_base.SoftDel
 
     class Meta:
         db_table = 'custom_user'
+        verbose_name = _("Usuário")
+        verbose_name_plural = _("Usuários")
 
     # Redefina os campos com related_name exclusivos
     groups = models.ManyToManyField(

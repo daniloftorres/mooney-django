@@ -122,6 +122,7 @@ Configurando o django para usar um model customizado.
 
    ```bash
        python manage.py test apps.customer.api.v1.tests
+       python manage.py test apps.erp.transaction.api.v1.tests
    ```
 
    Comando para executar teste todos unitario

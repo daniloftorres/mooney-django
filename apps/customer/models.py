@@ -1,15 +1,18 @@
 from django.db import models
+from django.utils.translation import gettext_lazy as _
 
 
 class Customer(models.Model):
-    nome = models.CharField(max_length=100)
-    email = models.EmailField()
-    telefone = models.CharField(max_length=15)
+    name = models.CharField(max_length=100, verbose_name=_(
+        "Name"), blank=True, null=True)
+    email = models.EmailField(verbose_name=_("Email"), blank=True, null=True)
+    phone = models.CharField(
+        max_length=15, verbose_name=_("Phone"), blank=True, null=True)
 
     def __str__(self):
-        return self.nome
+        return self.name
 
     class Meta:
-        verbose_name = u'Customer'
-        verbose_name_plural = u'Customers'
+        verbose_name = _('Customer')
+        verbose_name_plural = _('Customers')
         db_table = 'customer'
