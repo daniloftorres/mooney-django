@@ -14,7 +14,12 @@ class calculateSaleTransactionItem ():
     pass
 
 
-class SaleTransactionNew():
+class SaleTransactionCreate():
+    # create SaleTransactio in status creating
+    pass
+
+
+class SaleTransactionUpdate():
     # create SaleTransactio in status creating
     pass
 
@@ -26,14 +31,14 @@ class AddSaleTransactionItem():
     pass
 
 
-class UpdateSaleItem():
+class UpdateSaleTransactionItem():
     # atualiza item no SaleTransactionItem
     # self.calculateSaleTransactionItem
     # retonar Json Venda Completo Com novos Valores
     pass
 
 
-class RemoveSaleItem():
+class RemoveSaleTransactionItem():
     # remove item no SaleTransactionItem
     # self.calculateSaleTransactionItem
     # retonar Json Venda Completo Com novos Valores
