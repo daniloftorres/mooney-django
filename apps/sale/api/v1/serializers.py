@@ -2,7 +2,7 @@ from rest_framework import serializers
 from apps.sale.models import Sale
 
 
-class SalaSerializer (serializers.ModelSerializer):
+class SaleSerializer (serializers.ModelSerializer):
 
     class Meta:
         model = Sale

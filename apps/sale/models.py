@@ -4,6 +4,7 @@ from django.utils import timezone
 from apps.customer.models import Customer
 from apps.core import models as models_base
 from django.utils.translation import gettext_lazy as _
+from apps.erp.payment.models import PaymentMethod
 
 STATUS_SALE = (
     ('creation', _('Order Creation')),
@@ -25,6 +26,8 @@ class Sale(models_base.TimeStampedModel, models_base.SoftDeletionModel):
                              on_delete=models.CASCADE, verbose_name=_("User"))
     seller = models.ForeignKey('account.CustomUser',
                                on_delete=models.CASCADE, related_name='sales', verbose_name=_("Seller"), blank=True, null=True)
+    payment_method = models.ForeignKey(
+        PaymentMethod, on_delete=models.CASCADE, null=True, verbose_name=_("Payment Method"))
     customer = models.ForeignKey(
         Customer, on_delete=models.SET_NULL, null=True, verbose_name=_("Customer"))
     date_time = models.DateTimeField(

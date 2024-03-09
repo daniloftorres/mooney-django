@@ -45,9 +45,10 @@ urlpatterns = [
          name="product_category_list_create"),
 ] + urlpatterns
 
-# sale
+# sale with factory
 urlpatterns = [
-    path('v1/sale/', SaleEntryView.as_view(), name="sale_create"),
+    path('v1/factory/sale/', SaleEntryView.as_view(), name="sale_create"),
+    path('v1/factory/sale/<int:pk>/', SaleEntryView.as_view(), name="sale_get")
 ] + urlpatterns
 
 urlpatterns = [

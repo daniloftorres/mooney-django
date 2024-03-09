@@ -64,5 +64,3 @@
     - Coleção de valores de qualquer tipo, não repetido e conjuntos em si, são mutaveis, mas o elementos não são.
     exemplo: planeta_anao = {'plutao','ceres'}
     posso remover plutão, e adicionar outro, mas não posso trocar diretamente plutão por outro
-
-## Notação Big O

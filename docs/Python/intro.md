@@ -25,3 +25,8 @@
 - python3 -m venv ambiente_1
 - source ambiente_1/bin/activate
 - deactivate
+
+## Recursos Computacionais
+
+    Memoria : Guarda os dados
+    Processador (CPU) : Realiza Operações sobre os dados da memoria

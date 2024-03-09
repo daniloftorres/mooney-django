@@ -5,4 +5,4 @@ from apps.customer.models import Customer
 class CustomerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Customer
-        fields = ['id', 'nome', 'email', 'telefone']
+        fields = ['id', 'name', 'email', 'phone']

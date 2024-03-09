@@ -1,8 +1,8 @@
-from apps.sale.models import Sale, SaleItem
+from apps.erp.transaction.models import SaleTransaction, SaleTransactionItem
 from apps.product.models import Product
 
 
-class SaleFactory:
+class SaleTransactionFactory:
     def create_sale(self, user, customer, items):
         raise NotImplementedError(
             "This method should be implemented by subclasses.")
@@ -10,7 +10,7 @@ class SaleFactory:
 
 class BasicSaleFactory:
     def create_sale(self, user, customer, items):
-        sale = Sale(user=user, customer=customer)
+        sale = SaleTransaction(user=user, customer=customer)
         sale.save()
         for item in items:
 
@@ -20,7 +20,7 @@ class BasicSaleFactory:
             except Product.DoesNotExist:
                 continue
 
-            sale_item = SaleItem(
+            sale_item = SaleTransactionItem(
                 sale=sale,
                 product=product,
                 quantity=item.get('quantity'),
