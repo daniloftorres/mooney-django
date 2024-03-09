@@ -39,7 +39,43 @@
 
 1. [Venda](docs/django/venda/venda.md)
 
-   - Venda Item
+   Função: Calcula Total Venda (Selecionar todos os items, pegar valor e desconto e realizar os calculos e salvar na tabela principal SaleTransaction)
+
+   Função: Calcula Total a Ser Pago Conforme Forma de Pagamento :
+
+   - Cria registro no PaymentInstallmentSaleTransaction conforme, quantidade de parcelas ou apenas 1 para avista
+
+   Action : Nova Venda
+
+   - Cria SaleTransaction com status : creating
+   - Calcula Total Venda
+
+   Action : Adicionar Item
+
+   - Criar registro no SaleTransactionItem relacionado com o id do SaleTransaction
+   - Calcula Total Venda
+
+   Action : Atualizar Item
+
+   - Atuzaliar registro no SaleTransactionItem relacionado com o id do SaleTransactionItem
+   - Calcula Total Venda
+
+   Action : Remove Item
+
+   - Remove registro no SaleTransactionItem relacionado com o id do SaleTransactionItem
+   - Calcula Total Venda
+
+   Action : Forma de pagamento
+
+   - action : Adicionar Forma de Pagamento
+
+     - Adicionar Registro da Forma escolhida em : PaymentMethodSaleTransaction
+
+   - action : Remover Forma de Pagamento
+     - Remover Registro da Forma escolhida em : PaymentMethodSaleTransaction
+
+   Sale : creating
+   -> items
 
 ### Modulo Financeiro
 

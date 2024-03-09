@@ -10,6 +10,7 @@ from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
 )
+from apps.erp.payment.api.v1.views import PaymentMethodListCreateAPIView
 from django.conf.urls.static import static
 
 router = routers.DefaultRouter()
@@ -43,6 +44,14 @@ urlpatterns = [
          name="product_list_create"),
     path('v1/product/category/', ProductCategoryListCreateAPIView.as_view(),
          name="product_category_list_create"),
+] + urlpatterns
+
+# payment
+urlpatterns = [
+    path('v1/payment/method/', PaymentMethodListCreateAPIView.as_view(),
+         name="payment-method-create"),
+    path('v1/payment/method/<int:pk>/',
+         PaymentMethodListCreateAPIView.as_view(), name="payment-method-create")
 ] + urlpatterns
 
 # sale with factory
