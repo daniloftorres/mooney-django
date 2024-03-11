@@ -68,7 +68,7 @@ class SaleTransaction(models_base.TimeStampedModel, models_base.SoftDeletionMode
     sale_transaction_status = models.CharField(
         max_length=20, choices=STATUS_TRANSACTION_SALE, default='creation', verbose_name=_("Status"))
     sale_transaction_type = models.CharField(
-        max_length=10, choices=SALE_TRANSACTION_TYPE, verbose_name=_("Sale Transaction Type"))
+        max_length=10, choices=SALE_TRANSACTION_TYPE, default='expense', verbose_name=_("Sale Transaction Type"))
     user = models.ForeignKey(settings.AUTH_USER_MODEL,
                              on_delete=models.CASCADE, verbose_name=_("User"))
     customer = models.ForeignKey(
@@ -76,14 +76,14 @@ class SaleTransaction(models_base.TimeStampedModel, models_base.SoftDeletionMode
     seller = models.ForeignKey(
         'account.CustomUser', on_delete=models.CASCADE, verbose_name=_('Seller'), null=True, default=None, related_name="sale_transaction_seller")
     total_amount = models.DecimalField(
-        max_digits=10, decimal_places=2, verbose_name=_('Total Amount'))
+        max_digits=10, decimal_places=2, verbose_name=_('Total Amount'), null=True)
     total_discount_amount = models.DecimalField(
-        max_digits=10, decimal_places=2, verbose_name=_('Total Discount Amount'))
+        max_digits=10, decimal_places=2, verbose_name=_('Total Discount Amount'), null=True)
     net_amount = models.DecimalField(
-        max_digits=10, decimal_places=2, verbose_name=_('Net Amount'))
+        max_digits=10, decimal_places=2, verbose_name=_('Net Amount'), null=True)
     tax_amount = models.DecimalField(
-        max_digits=10, decimal_places=2, verbose_name=_('Tax Amount'))
-    sale_date = models.DateTimeField(verbose_name=_('Sale Date'))
+        max_digits=10, decimal_places=2, verbose_name=_('Tax Amount'), null=True)
+    sale_date = models.DateTimeField(verbose_name=_('Sale Date'), null=True)
 
     class Meta:
         db_table = _("transaction_sale")
@@ -99,7 +99,7 @@ class SaleTransactionItem(models_base.TimeStampedModel, models_base.SoftDeletion
     quantity = models.PositiveIntegerField(
         default=1, verbose_name=_("Quantity"))
     sale_price = models.DecimalField(
-        max_digits=10, decimal_places=2, verbose_name=_("Sale Price"))
+        max_digits=10, decimal_places=2, verbose_name=_("Sale Price"), null=True)
 
     def __str__(self):
         return f"{self.product.name} x {self.quantity}"
@@ -116,7 +116,7 @@ class PaymentMethodSaleTransaction(models.Model):
         PaymentMethod, on_delete=models.CASCADE, verbose_name=_(''), null=True)
 
     sale_transaction = models.ForeignKey(
-        SaleTransaction, on_delete=models.CASCADE, verbose_name=_(''), null=True)
+        SaleTransaction, on_delete=models.CASCADE, verbose_name=_(''), null=True, related_name="payment_methods")
 
     payment_date = models.DateTimeField(auto_now_add=True, verbose_name=_(
         'Payment Date'), help_text=_('Date and time the payment was registered.'))
@@ -141,20 +141,22 @@ class PaymentMethodSaleTransaction(models.Model):
 
 class PaymentInstallmentSaleTransaction(models.Model):
     sale_transaction = models.ForeignKey(
-        SaleTransaction, on_delete=models.CASCADE, verbose_name=_('Sale Transaction'), null=True)
+        SaleTransaction, on_delete=models.CASCADE, verbose_name=_('Sale Transaction'), null=True, related_name='payment_installments')
     status = models.CharField(
-        max_length=10, choices=PAYMENT_INSTALLMENT_TRANSACTION_TYPE, verbose_name=_('Status'))
+        max_length=10, choices=PAYMENT_INSTALLMENT_TRANSACTION_TYPE, default='Pending', verbose_name=_('Status'))
     payment_method = models.ForeignKey(
         'payment.PaymentMethod', on_delete=models.CASCADE, verbose_name=_('Payment Method'), null=True)
-    installment = models.IntegerField(verbose_name=_('Installment Number'))
+    # installment = models.IntegerField(verbose_name=_('Installment Number'))
+    installment = models.PositiveIntegerField(blank=True, verbose_name=_(
+        'Installment Number'), null=True)
     total_amount = models.DecimalField(
-        max_digits=10, decimal_places=2, verbose_name=_("Total Amount"))
+        max_digits=10, decimal_places=2, verbose_name=_("Total Amount"), null=True)
     total_discount_amount = models.DecimalField(
-        max_digits=10, decimal_places=2, verbose_name=_('Total Discount Amount'))
+        max_digits=10, decimal_places=2, verbose_name=_('Total Discount Amount'), null=True)
     net_amount = models.DecimalField(
-        max_digits=10, decimal_places=2, verbose_name=_("Net Amount"))
+        max_digits=10, decimal_places=2, verbose_name=_("Net Amount"), null=True)
     tax_amount = models.DecimalField(
-        max_digits=10, decimal_places=2, verbose_name=_('Tax Amount'))
+        max_digits=10, decimal_places=2, verbose_name=_('Tax Amount'), null=True)
     notes = models.TextField(blank=True, verbose_name=_('Notes'))
 
     class Meta:

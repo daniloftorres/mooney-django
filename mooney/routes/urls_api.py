@@ -11,6 +11,7 @@ from rest_framework_simplejwt.views import (
     TokenRefreshView,
 )
 from apps.erp.payment.api.v1.views import PaymentMethodListCreateAPIView
+from apps.erp.transaction.api.v1.services.views import SaleTransactionAPI
 from django.conf.urls.static import static
 
 router = routers.DefaultRouter()
@@ -58,6 +59,14 @@ urlpatterns = [
 urlpatterns = [
     path('v1/factory/sale/', SaleEntryView.as_view(), name="sale_create"),
     path('v1/factory/sale/<int:pk>/', SaleEntryView.as_view(), name="sale_get")
+] + urlpatterns
+
+# solid
+urlpatterns = [
+    path('v1/sale/', SaleTransactionAPI.as_view(),
+         name="sale_transaction_create"),
+    path('v1/sale/<int:pk>/', SaleTransactionAPI.as_view(),
+         name="sale_transaction_get")
 ] + urlpatterns
 
 urlpatterns = [

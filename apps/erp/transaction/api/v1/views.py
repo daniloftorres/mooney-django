@@ -1,6 +1,8 @@
 from rest_framework import status
 from rest_framework.decorators import action
 from rest_framework.response import Response
+from rest_framework.views import APIView
+from apps.erp.transaction.api.v1.serializers import SaleTransactionSerializer
 
 
 class calculateSaleTransactionItem ():
@@ -24,6 +26,21 @@ class SaleTransactionCreate():
     }
     """
     pass
+
+
+class SaleTransaction(APIView):
+
+    def post(self, request, *args, **kwargs):
+
+        # create SaleTransactio in status creating
+        """
+        {
+            "status": "creation",
+            "user": 1,
+            "seller": 1
+        }
+        """
+        pass
 
 
 class SaleTransactionUpdate():
