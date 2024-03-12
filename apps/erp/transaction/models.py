@@ -100,6 +100,10 @@ class SaleTransactionItem(models_base.TimeStampedModel, models_base.SoftDeletion
         default=1, verbose_name=_("Quantity"))
     sale_price = models.DecimalField(
         max_digits=10, decimal_places=2, verbose_name=_("Sale Price"), null=True)
+    total_amount = models.DecimalField(
+        max_digits=10, decimal_places=2, verbose_name=_('Total Amount'), null=True)
+    discount = models.DecimalField(
+        max_digits=10, decimal_places=2, verbose_name=_('Discount'), null=True)
 
     def __str__(self):
         return f"{self.product.name} x {self.quantity}"

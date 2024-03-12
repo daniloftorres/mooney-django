@@ -17,9 +17,16 @@ class SaleTransactionItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = SaleTransactionItem
         fields = ('__all__')
-        """extra_kwargs = {
+        extra_kwargs = {
             "sale_transaction": {'read_only': False, 'required': False}
-        }"""
+        }
+
+    def create(self, validate_data):
+        print("into create")
+        sale_trasaction_item = SaleTransactionItem.objects.create(
+            **validate_data)
+        print('apos create item', sale_trasaction_item)
+        return sale_trasaction_item
 
 
 class PaymentInstallmentSaleTransactionSerializer(serializers.ModelSerializer):
@@ -62,22 +69,46 @@ class SaleTransactionSerializer(serializers.ModelSerializer):
         fields = ('__all__')
 
     def create(self, validated_data):
-        print("init create ::: ", validated_data)
+
+        # remove relationship
         items_data = validated_data.pop('items', [])
         payment_method_data = validated_data.pop('payment_methods', [])
         payment_installments = validated_data.pop('payment_installments', [])
 
-        print("create ::: ", validated_data)
+        # create sala transaction
         sale_transaction = SaleTransaction.objects.create(**validated_data)
-        print("sale_transaction ::: ", sale_transaction)
-        print("sale_transaction.id ::: ", sale_transaction.id)
 
-        if len(items_data) > 0:
+        # create items
+        """if len(items_data) > 0:
             for item in items_data:
                 SaleTransactionItem.objects.create(
-                    sale_transaction=sale_transaction, **item)
+                    sale_transaction=sale_transaction, **item)"""
 
         return sale_transaction
+
+    def update(self, instance, validated_data):
+
+        # Atualiza campos diretos (não-relacionais)
+        for field, value in validated_data.items():
+            if field not in ['items', 'payment_methods', 'payment_installments']:
+                setattr(instance, field, value)
+        instance.save()
+
+        # Atualiza itens da transação
+        """if 'items' in validated_data:
+            items_data = validated_data.pop('items')
+            # Aqui você pode implementar a lógica para atualizar, criar ou excluir itens
+            # Isso dependerá da sua lógica de negócios específica
+            # Exemplo simples:
+            instance.items.all().delete()  # Remover itens existentes e substituí-los
+            for item_data in items_data:
+                SaleTransactionItem.objects.create(
+                    sale_transaction=instance, **item_data)"""
+
+        # Similar para payment_methods e payment_installments
+        # Implemente a lógica conforme necessário para seu modelo de dados e regras de negócio
+
+        return instance
 
 
 class TransactionSerializer(serializers.ModelSerializer):
@@ -85,13 +116,3 @@ class TransactionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Transaction
         fields = ('__all__')
-
-
-"""class SaleTransactionSerializer(serializers.ModelSerializer):
-    item = SaleTransactionItemSerializer(required=False, many=True)
-    payment_method = PaymentMethodSaleTransactionSerializer(
-        required=False, many=True)
-
-    class Meta:
-        fields = ('__all__')
-        model = SaleTransaction"""

@@ -59,7 +59,7 @@ INSTALLED_APPS = [
     'apps.product',
     # 'apps.sale',
     'apps.erp.payment',
-    'apps.erp.transaction',
+    'apps.erp.transaction.apps.TransactionConfig',
 ]
 
 MIDDLEWARE = [

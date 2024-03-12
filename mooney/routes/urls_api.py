@@ -11,7 +11,9 @@ from rest_framework_simplejwt.views import (
     TokenRefreshView,
 )
 from apps.erp.payment.api.v1.views import PaymentMethodListCreateAPIView
-from apps.erp.transaction.api.v1.services.views import SaleTransactionAPI
+from apps.erp.transaction.api.v1.services.views import SaleTransactionServiceAPI, SaleTransactionItemServiceAPI
+from apps.erp.transaction.api.v1.views import SaleTransactionAPI, SaleTransactionItemAPI
+
 from django.conf.urls.static import static
 
 router = routers.DefaultRouter()
@@ -61,12 +63,30 @@ urlpatterns = [
     path('v1/factory/sale/<int:pk>/', SaleEntryView.as_view(), name="sale_get")
 ] + urlpatterns
 
-# solid
+# default
 urlpatterns = [
     path('v1/sale/', SaleTransactionAPI.as_view(),
          name="sale_transaction_create"),
     path('v1/sale/<int:pk>/', SaleTransactionAPI.as_view(),
-         name="sale_transaction_get")
+         name="sale_transaction_get"),
+
+    path('v1/sale/item/', SaleTransactionItemAPI.as_view(),
+         name="sale_transaction_item_create"),
+    path('v1/sale/item/<int:pk>/', SaleTransactionItemAPI.as_view(),
+         name="sale_transaction_item_get")
+] + urlpatterns
+
+# default + service
+urlpatterns = [
+    path('v1/service/sale/', SaleTransactionServiceAPI.as_view(),
+         name="sale_transaction_service_create"),
+    path('v1/service/sale/<int:pk>/', SaleTransactionServiceAPI.as_view(),
+         name="sale_transaction_service_get"),
+
+    path('v1/service/sale/item/', SaleTransactionItemServiceAPI.as_view(),
+         name="sale_transaction_service_item_create"),
+    path('v1/service/sale/item/<int:pk>/', SaleTransactionItemServiceAPI.as_view(),
+         name="sale_transaction_service_item_get")
 ] + urlpatterns
 
 urlpatterns = [
