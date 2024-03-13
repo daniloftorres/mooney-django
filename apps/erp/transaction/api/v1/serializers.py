@@ -3,6 +3,7 @@ from apps.erp.transaction.models import Transaction, SaleTransaction, SaleTransa
 # from apps.sale.api.v1.serializers import SaleSerializer
 from apps.account.models import CustomUser as User
 from apps.customer.models import Customer
+from apps.product.models import Product
 
 
 class PaymentMethodSaleTransaction(serializers.ModelSerializer):
@@ -13,6 +14,8 @@ class PaymentMethodSaleTransaction(serializers.ModelSerializer):
 
 
 class SaleTransactionItemSerializer(serializers.ModelSerializer):
+    product = serializers.PrimaryKeyRelatedField(
+        queryset=Product.objects.all())
 
     class Meta:
         model = SaleTransactionItem

@@ -1,9 +1,10 @@
+from django.utils import timezone
 from django.conf import settings
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from apps.core import models as models_base
-from apps.erp.payment.models import PaymentMethod
-
+# from apps.erp.payment.models import PaymentMethod
+# from .api.v1.services.services import SaleTransactionService
 STATUS_TRANSACTION = (
     ('Pending', _('Pending')),
     ('Paid', _('Paid')),
@@ -75,6 +76,8 @@ class SaleTransaction(models_base.TimeStampedModel, models_base.SoftDeletionMode
         'customer.Customer', on_delete=models.CASCADE, verbose_name=_('Customer'), null=True, default=None)
     seller = models.ForeignKey(
         'account.CustomUser', on_delete=models.CASCADE, verbose_name=_('Seller'), null=True, default=None, related_name="sale_transaction_seller")
+    total_quantity = models.PositiveIntegerField(
+        default=0, verbose_name=_("Total Quantity"), null=True)
     total_amount = models.DecimalField(
         max_digits=10, decimal_places=2, verbose_name=_('Total Amount'), null=True)
     total_discount_amount = models.DecimalField(
@@ -113,11 +116,19 @@ class SaleTransactionItem(models_base.TimeStampedModel, models_base.SoftDeletion
         verbose_name = _("Sale Item")
         verbose_name_plural = _("Sale Items")
 
+    def delete(self, *args, **kwargs):
+        self.deleted_at = timezone.now()
+        self.save()
+
+        from .api.v1.services.services import SaleTransactionService
+        SaleTransactionService.handle_change_in_sale_transaction_item(
+            self)
+
 
 class PaymentMethodSaleTransaction(models.Model):
 
     payment_method = models.ForeignKey(
-        PaymentMethod, on_delete=models.CASCADE, verbose_name=_(''), null=True)
+        'payment.PaymentMethod', on_delete=models.CASCADE, verbose_name=_(''), null=True)
 
     sale_transaction = models.ForeignKey(
         SaleTransaction, on_delete=models.CASCADE, verbose_name=_(''), null=True, related_name="payment_methods")

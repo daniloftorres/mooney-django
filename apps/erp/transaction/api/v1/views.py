@@ -71,7 +71,14 @@ class SaleTransactionItemAPI(APIView):
         return Response(status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, pk, *args, **kwargs):
+        print("dentro delete pk :: ", pk)
         sale_transaction_item = self.get_object(pk)
-        sale_transaction_item.delete()
-        sale_transaction_item.save()
-        return Response(status.HTTP_204_NO_CONTENT)
+        print("sale_transaction_item :: ", sale_transaction_item)
+
+        if sale_transaction_item.delete():
+            print('funcao delete ativada como true')
+        else:
+            print('funcao delete ativada como false')
+
+        # sale_transaction_item.save()
+        return Response(status=status.HTTP_204_NO_CONTENT)

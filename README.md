@@ -1,131 +1,103 @@
-# Project Mooney | API
+# Mooney Python API
 
-# Índice
+## Overview
 
-- [Teoria Geral](docs/teoria.md)
+Mooney Python API é uma aplicação construída para gerenciar o fluxo completo de vendas, desde a criação da venda, adição de produtos, seleção de clientes e vendedores, até a finalização na área de finanças. Na área financeira, os usuários podem visualizar e gerenciar todas as entradas e parcelas resultantes das vendas. Este projeto aplica conceitos de SOLID e Design de Serviço para criar uma solução robusta e escalável.
 
-## Instando e Configurando Todo o Ambiente
+## Tecnologias Utilizadas
 
-- [Ambiente Usado](docs/ambientes.md)
-- [Pré-requisitos](docs/pre-requisitos.md)
-- [Django](docs/django.md)
+- Python
+- Django
+- Django Rest Framework
+- Docker
+- API REST
 
-### Modulo Usuário
+## Conceitos
 
-1. [Usuário](docs/django/usuario/usuario.md)
+- SOLID Principles
+- Design de Serviço
+- Autenticação e Autorização
+- Trabalho com Docker e Docker Compose
 
-   - Fluxo de Api RestFull (Django Rest Framework DRF)
-     - Get, Post, Put, Path e Delete
-   - Autenticação
-     - JWT e OAuth2
-   - Test:
-     - Teste unitario para JWT e OAuth2
-   - Designer Parttners MV (sem o T)
+## Estrutura de Arquivos e Pastas
 
-### Modulo Cliente
+A estrutura do projeto segue um modelo modular, facilitando a compreensão e manutenção do código. Cada módulo é responsável por uma parte específica da lógica de negócio, organizados da seguinte forma:
 
-1. [Cliente](docs/django/cliente/cliente.md)
+```
+mooney/
+├── apps/
+│   ├── account/
+│   ├── core/
+│   ├── customer/
+│   ├── erp/
+│   │   ├── payment/
+│   │   └── transaction/
+│   └── product/
+├── config/
+│   ├── local/
+│   └── production/
+├── mooney/
+│   ├── asgi.py
+│   ├── settings.py
+│   └── urls.py
+└── docker-compose.yml
+```
 
-   - Fluxo de Api RestFull (Django Rest Framework DRF)
+## Como Executar o Projeto Localmente
 
-### Modulo Produto
+### Pré-requisitos
 
-1. [Produto](docs/django/produto/produto.md)
+- Git
+- Python 3.x
+- Pip
+- Docker
+- Docker Compose
 
-   - Categoria
-   - Imagem
+### Configuração do Ambiente
 
-### Modulo Venda
+O projeto foi testado em um ambiente Ubuntu, mas pode ser executado em qualquer sistema operacional que suporte as tecnologias utilizadas.
 
-1. [Venda](docs/django/venda/venda.md)
+### Clonando o Projeto
 
-   Função: Calcula Total Venda (Selecionar todos os items, pegar valor e desconto e realizar os calculos e salvar na tabela principal SaleTransaction)
+```bash
+git clone https://github.com/daniloftorres/mooney.github.io.git
+```
 
-   Função: Calcula Total a Ser Pago Conforme Forma de Pagamento :
+### Executando com Docker Compose
 
-   - Cria registro no PaymentInstallmentSaleTransaction conforme, quantidade de parcelas ou apenas 1 para avista
+```bash
+docker-compose -f docker-compose.local.yml up
+```
 
-   Action : Nova Venda
+### Configuração do Hosts no Ubuntu
 
-   - Cria SaleTransaction com status : creating
-   - Calcula Total Venda
+Adicione as seguintes linhas ao arquivo `/etc/hosts`:
 
-   Action : Adicionar Item
+```
+127.0.0.1       admin.mooney.com
+127.0.0.1       api.mooney.com
+```
 
-   - Criar registro no SaleTransactionItem relacionado com o id do SaleTransaction
-   - Calcula Total Venda
+### Checagem do Sistema
 
-   Action : Atualizar Item
+Após iniciar os serviços com Docker Compose, você pode acessar a API em `http://api.mooney.com` e o painel de administração em `http://admin.mooney.com`.
 
-   - Atuzaliar registro no SaleTransactionItem relacionado com o id do SaleTransactionItem
-   - Calcula Total Venda
+## Utilizando a API
 
-   Action : Remove Item
+A Mooney API utiliza autenticação JWT para a maioria dos endpoints. É necessário obter um token JWT e incluí-lo no cabeçalho das requisições para acessar os recursos protegidos.
 
-   - Remove registro no SaleTransactionItem relacionado com o id do SaleTransactionItem
-   - Calcula Total Venda
+### Exemplos de Requisições
 
-   Action : Forma de pagamento
+A documentação detalhada para interagir com cada endpoint está disponível na documentação da API, que pode ser acessada após iniciar o projeto. Seguem alguns exemplos de como utilizar os endpoints principais:
 
-   - action : Adicionar Forma de Pagamento
+- **Obter Token JWT:**
 
-     - Adicionar Registro da Forma escolhida em : PaymentMethodSaleTransaction
+```bash
+curl -X POST http://api.mooney.com/v1/token/      -H "Content-Type: application/json"      -d '{"username": "seu_usuario", "password": "sua_senha"}'
+```
 
-   - action : Remover Forma de Pagamento
-     - Remover Registro da Forma escolhida em : PaymentMethodSaleTransaction
+- **Criar Sale Transaction:**
 
-   Sale : creating
-   -> items
-
-### Modulo Financeiro
-
-1. [Financeiro](docs/django/financeiro/financeiro.md)
-
-   - Lançamentos
-   - Forma de Pagamento
-   - Lançamento Parcela
-
-   App : Financeiro
-
-   SALE_TRANSACTION_TYPES = (
-   ('expense', 'Expense'),
-   ('revenue', 'Revenue'),
-   )
-
-   TRANSACTION_TYPES = (
-   ('sale', 'Sale'),
-   )
-
-   Transaction
-
-   - id
-   - status
-   - transaction_type
-   - total_amount
-   - total_discount_amount
-   - net_amount
-   - notes
-
-   SaleTransaction(Transaction)
-
-   - sale_transaction_status
-   - sale_transaction_type
-   - payment_type_id
-   - customer_id
-   - seller_id
-   - sale_id
-   - tax_amount
-   - sale_date
-
-   PaymentInstallmentTransaction
-
-   - id
-   - sale_transaction_id (N:1)
-   - status : (Pending, Paid, Cancelled)
-   - payment_method_id
-   - installment
-   - total_amount
-   - total_discount_amount
-   - net_amount
-   - tax_amount
-   - notes
+```bash
+curl -X POST http://api.mooney.com/v1/service/sale/      -H "Authorization: Bearer seu_access_token"      -H "Content-Type: application/json"      -d '{"customer": "id_do_cliente", "seller": "id_do_vendedor", ...}'
+```

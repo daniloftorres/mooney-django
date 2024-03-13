@@ -2,23 +2,10 @@
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
-# from decouple import Config, RepositoryEnv
-# env_path = 'mooney/.env'
-
-# Carrega as variáveis de ambiente do arquivo .env
-# config = Config(RepositoryEnv(env_path))
-
-# backend/mooney/mooney/local.py
 
 
 def main():
     """Run administrative tasks."""
-
-    # Padrão para 'local' se 'ENV' não estiver definido
-    # env = config('ENV', default='local')
-    # print("manage.py :: ", os.getenv('ENV'))
-    # print("checando var env direta :: ", env)
-    # print("montando var config :: ", f'mooney.{env}')
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', f'mooney.local')
 
     try:

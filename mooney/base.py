@@ -52,7 +52,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'oauth2_provider',
 
-    # ... outras apps instaladas ...
+    # ... mooney apps
     'apps.account',
     'apps.core',
     'apps.customer',
@@ -187,7 +187,6 @@ LOGGING = {
             'level': 'DEBUG',
             'propagate': True,
         },
-        # Você pode adicionar mais loggers específicos aqui
     },
 }
 
@@ -201,13 +200,6 @@ LOGGING = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }"""
-print("GET DADOS DB ENV SECRET_KEY:: ", os.getenv('SECRET_KEY'))
-print("GET DADOS DB ENV DB_ENGINE:: ", os.getenv('ENV'))
-print("GET DADOS DB ENV POSTGRES_DB:: ", os.getenv('POSTGRES_DB'))
-print("GET DADOS DB ENV POSTGRES_USER:: ", os.getenv('POSTGRES_USER'))
-print("GET DADOS DB ENV POSTGRES_PASSWORD:: ", os.getenv('POSTGRES_PASSWORD'))
-print("GET DADOS DB ENV DB_HOST:: ", os.getenv('DB_HOST'))
-print("GET DADOS DB ENV DB_PORT:: ", os.getenv('DB_PORT'))
 
 DATABASES = {
     'default': {
@@ -220,25 +212,6 @@ DATABASES = {
     }
 }
 
-"""DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'db-jinn-production',
-        'USER': 'db-user-jinn-production',
-        'PASSWORD': 'db-pass-jinn-production',
-        'HOST': 'db',  # 100.26.217.58
-        'PORT': 5432,
-    }
-}
-DB_ENGINE=django.db.backends.postgresql
-POSTGRES_DB=mooney_db
-POSTGRES_USER=mooney_user
-POSTGRES_PASSWORD=mooney_password
-DB_PASSWORD=mooney_password
-DB_HOST=postgres
-DB_PORT=5432
-PGDATA=./tmp/db
-"""
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
