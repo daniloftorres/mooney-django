@@ -258,7 +258,7 @@ Adicione no arquivo hosts as configurações abaixo:
      127.0.0.1       api.mooney.com
 ```
 
-# Documentação de Acesso
+# API
 
 Este documento fornece instruções sobre como acessar e interagir com a Mooney API, utilizando o framework Django. Abaixo estão listados os endpoints disponíveis e exemplos de como fazer requisições para cada um deles.
 
