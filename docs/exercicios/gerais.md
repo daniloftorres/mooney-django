@@ -1,3 +1,0 @@
-#Expressão Geradora
-
-#list compreshion
