@@ -57,58 +57,6 @@ Adicione no arquivo hosts as configurações abaixo:
 127.0.0.1       api.mooney.com
 ```
 
-## Autenticação e Uso da API
-
-### Autenticação JWT
-
-- **Obter Token JWT**
-
-  ```bash
-  curl -X POST http://localhost:8000/v1/token/        -H "Content-Type: application/json"        -d '{"username": "seu_usuario", "password": "sua_senha"}'
-  ```
-
-- **Refresh Token JWT**
-  ```bash
-  curl -X POST http://localhost:8000/v1/token/refresh/        -H "Content-Type: application/json"        -d '{"refresh": "seu_refresh_token"}'
-  ```
-
-### Autenticação OAuth2
-
-- **Obter Token via Client Credentials**
-
-  ```bash
-  curl -X POST http://localhost:8000/v1/oauth2-client-credentials/        -H "Authorization: Basic <base64(client_id:client_secret)>"        -d "grant_type=client_credentials"
-  ```
-
-- **Obter Token via Password**
-  ```bash
-  curl -X POST http://localhost:8000/v1/oauth2-password/        -H "Authorization: Basic <base64(client_id:client_secret)>"        -d "grant_type=password&username=seu_usuario&password=sua_senha"
-  ```
-
-### Exemplos de Uso da API
-
-- **Sale Transaction**
-
-  - Criar Sale Transaction
-
-  ```bash
-
-  ```
-
-  - Obter Sale Transaction
-
-- **Sale Transaction Item**
-
-  - Criar Sale Transaction Item
-  - Obter Sale Transaction Item
-
-- **Product**
-
-  - Listar ou Criar Produto
-
-- **Payment Method**
-  - Criar Método de Pagamento
-
 # Mooney API - Documentação de Acesso
 
 Este documento fornece instruções sobre como acessar e interagir com a Mooney API, utilizando o framework Django. Abaixo estão listados os endpoints disponíveis e exemplos de como fazer requisições para cada um deles.
