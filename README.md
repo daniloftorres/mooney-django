@@ -440,3 +440,25 @@ curl -X POST http://localhost:8000/v1/token/refresh/ \
      curl --location --request GET 'http://api.mooney.com/v1/payment/method/1/' \
      --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEwMjczNTQzLCJpYXQiOjE3MTAyNzMyNDMsImp0aSI6ImY5OGU4N2FmNjk3YTQ0NmZhMzY2MTQzMWM1ZGRkOGY0IiwidXNlcl9pZCI6MX0.1ZgBgbU65J6m6adQOrf7bIDc3Iyk1zhT9_o7OeJOpkk'
 ```
+
+## Cliente
+
+### Criar Cliente
+
+```bash
+     curl --location --request POST 'http://api.mooney.com/v1/customer/' \
+     --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEwMzUyNDQ5LCJpYXQiOjE3MTAzNTIxNDksImp0aSI6ImUxZDQ0NDVlYTE1MDRhM2ZhZmU5NGY0NWQ0NmY0YjNjIiwidXNlcl9pZCI6MX0.y9HbispCLDewbOFW-ab31jAPCzlDZ_SguW6NFXNCpao' \
+     --header 'Content-Type: application/json' \
+     --data-raw '{
+     "name":"Danilo",
+     "email":"danilotorres@mail.com",
+     "phone":"16900001111"
+     }'
+```
+
+### Obter Cliente
+
+```bash
+     curl --location --request GET 'http://api.mooney.com/v1/customer/1/' \
+     --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEwMzUyNzk1LCJpYXQiOjE3MTAzNTI0OTUsImp0aSI6ImViNTNkODI1OTg5MTQ1MGU4ODdiMmM4MWU1MGEzYjRmIiwidXNlcl9pZCI6MX0.W7DUd6U61SqXOiSfSdK9pa-K2VzSEbNxgsaNPBmvsdA'
+```
