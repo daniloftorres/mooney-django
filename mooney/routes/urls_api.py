@@ -46,7 +46,9 @@ urlpatterns = [
     path('v1/product/', ProductListCreateAPIView.as_view(),
          name="product_list_create"),
     path('v1/product/category/', ProductCategoryListCreateAPIView.as_view(),
-         name="product_category_list_create"),
+         name="product_category_create"),
+    path('v1/product/category/<int:pk>/', ProductCategoryListCreateAPIView.as_view(),
+         name="product_category_list"),
 ] + urlpatterns
 
 # payment

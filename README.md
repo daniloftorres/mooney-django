@@ -15,11 +15,212 @@ Gerenciar requisições de um fluxo de venda, partindo da criação da venda, ad
 
 - Alguns conceitos de SOLID
 - Design de Serviço
+- MTV
+- API REST
 
 ## Estrutura de Arquivos e Pastas
 
 ```
-<detalhe da estrutura de arquivos omitido para brevidade>
+├── mooney-django/
+│   ├── apps/
+│   │   ├── account/
+│   │   │   └── admin.py
+│   │   │   ├── api/
+│   │   │   │   └── __init__.py
+│   │   │   │   ├── v1/
+│   │   │   │   │   └── __init__.py
+│   │   │   │   │   └── serializers.py
+│   │   │   │   │   └── views.py
+│   │   │   └── apps.py
+│   │   │   └── __init__.py
+│   │   │   ├── migrations/
+│   │   │   │   └── 0001_initial.py
+│   │   │   │   └── __init__.py
+│   │   │   └── models.py
+│   │   │   └── tests.py
+│   │   │   └── TimezoneMiddleware.py
+│   │   │   └── UserLanguageMiddleware.py
+│   │   │   └── views.py
+│   │   ├── core/
+│   │   │   ├── api/
+│   │   │   │   ├── v1/
+│   │   │   │   │   └── admin.py
+│   │   │   │   │   └── apps.py
+│   │   │   │   │   └── __init__.py
+│   │   │   │   │   ├── migrations/
+│   │   │   │   │   │   └── __init__.py
+│   │   │   │   │   └── tests.py
+│   │   │   │   │   └── views.py
+│   │   │   └── apps.py
+│   │   │   └── __init__.py
+│   │   │   ├── migrations/
+│   │   │   │   └── __init__.py
+│   │   │   └── models.py
+│   │   ├── customer/
+│   │   │   └── admin.py
+│   │   │   ├── api/
+│   │   │   │   └── __init__.py
+│   │   │   │   ├── v1/
+│   │   │   │   │   └── admin.py
+│   │   │   │   │   └── __init__.py
+│   │   │   │   │   └── serializers.py
+│   │   │   │   │   └── tests copy.py
+│   │   │   │   │   └── tests.py
+│   │   │   │   │   └── views_oauth2_client_credentials.py
+│   │   │   │   │   └── views_oauth2_password.py
+│   │   │   │   │   └── views_oauth2.py
+│   │   │   │   │   └── views.py
+│   │   │   └── apps.py
+│   │   │   └── __init__.py
+│   │   │   ├── migrations/
+│   │   │   │   └── 0001_initial.py
+│   │   │   │   └── __init__.py
+│   │   │   └── models.py
+│   │   │   └── tests.py
+│   │   ├── erp/
+│   │   │   ├── payment/
+│   │   │   │   └── admin.py
+│   │   │   │   ├── api/
+│   │   │   │   │   ├── v1/
+│   │   │   │   │   │   └── serializers.py
+│   │   │   │   │   │   └── views.py
+│   │   │   │   └── apps.py
+│   │   │   │   └── __init__.py
+│   │   │   │   ├── migrations/
+│   │   │   │   │   └── 0001_initial.py
+│   │   │   │   │   └── __init__.py
+│   │   │   │   └── models.py
+│   │   │   │   └── tests.py
+│   │   │   │   └── views.py
+│   │   │   ├── transaction/
+│   │   │   │   └── admin.py
+│   │   │   │   ├── api/
+│   │   │   │   │   └── __init__.py
+│   │   │   │   │   ├── v1/
+│   │   │   │   │   │   └── __init__.py
+│   │   │   │   │   │   └── serializers.py
+│   │   │   │   │   │   ├── services/
+│   │   │   │   │   │   │   └── services.py
+│   │   │   │   │   │   │   └── views.py
+│   │   │   │   │   │   └── tests.py
+│   │   │   │   │   │   └── views.py
+│   │   │   │   └── apps.py
+│   │   │   │   └── __init__.py
+│   │   │   │   ├── migrations/
+│   │   │   │   │   └── 0001_initial.py
+│   │   │   │   │   └── 0002_auto_20240311_1802.py
+│   │   │   │   │   └── 0003_alter_saletransaction_sale_date.py
+│   │   │   │   │   └── 0004_alter_paymentinstallmentsaletransaction_status.py
+│   │   │   │   │   └── 0005_alter_paymentinstallmentsaletransaction_installment.py
+│   │   │   │   │   └── 0006_auto_20240312_0044.py
+│   │   │   │   │   └── 0007_saletransaction_total_quantity.py
+│   │   │   │   │   └── __init__.py
+│   │   │   │   └── models.py
+│   │   │   │   └── signals.py
+│   │   │   │   └── tests.py
+│   │   │   │   └── views.py
+│   │   ├── product/
+│   │   │   └── admin.py
+│   │   │   ├── api/
+│   │   │   │   └── __init__.py
+│   │   │   │   ├── v1/
+│   │   │   │   │   └── admin.py
+│   │   │   │   │   └── __init__.py
+│   │   │   │   │   └── serializers.py
+│   │   │   │   │   └── tests copy.py
+│   │   │   │   │   └── tests.py
+│   │   │   │   │   └── views_oauth2_client_credentials.py
+│   │   │   │   │   └── views_oauth2_password.py
+│   │   │   │   │   └── views_oauth2.py
+│   │   │   │   │   └── views.py
+│   │   │   └── apps.py
+│   │   │   └── __init__.py
+│   │   │   ├── migrations/
+│   │   │   │   └── 0001_initial.py
+│   │   │   │   └── __init__.py
+│   │   │   └── models.py
+│   │   │   └── tests.py
+│   │   │   └── views.py
+│   │   ├── sale/
+│   │   │   └── admin.py
+│   │   │   ├── api/
+│   │   │   │   └── __init__.py
+│   │   │   │   ├── v1/
+│   │   │   │   │   ├── factory/
+│   │   │   │   │   │   └── factory.py
+│   │   │   │   │   │   └── views.py
+│   │   │   │   │   └── __init__.py
+│   │   │   │   │   └── serializers.py
+│   │   │   │   │   ├── strategies/
+│   │   │   │   │   │   └── desconto.py
+│   │   │   │   │   │   └── pagamento.py
+│   │   │   │   │   │   └── views.py
+│   │   │   │   │   └── tests.py
+│   │   │   │   │   └── views.py
+│   │   │   └── apps.py
+│   │   │   └── __init__.py
+│   │   │   ├── migrations/
+│   │   │   │   └── __init__.py
+│   │   │   └── models.py
+│   │   │   └── tests.py
+│   └── clear_database.py
+│   ├── config/
+│   │   ├── local/
+│   │   │   └── Dockerfile
+│   │   │   └── entrypoint.sh
+│   │   │   ├── nginx/
+│   │   │   │   ├── conf.d/
+│   │   │   │   │   └── mooney.conf
+│   │   │   │   └── nginx_antigo.conf
+│   │   │   │   └── nginx.conf
+│   │   │   ├── postgres/
+│   │   │   │   └── my-pg_hba.conf
+│   │   │   │   └── my-postgresql.conf
+│   │   │   │   └── postgresql.conf
+│   │   │   ├── postgresql/
+│   │   │   │   ├── my-pg_hba.conf/
+│   │   │   │   │   └── *
+│   │   │   │   ├── my-postgresql.conf/
+│   │   │   │   │   └── *
+│   │   │   └── requirements.txt
+│   │   ├── postgres/
+│   │   │   ├── postgresql.conf/
+│   │   │   │   └── *
+│   │   ├── production/
+│   │   │   └── *
+│   │   ├── staging/
+│   │   │   └── *
+│   └── docker-compose.local.yml
+│   └── docker-compose.production.yml
+│   └── draw_tree.sh
+│   └── manage.py
+│   ├── mooney/
+│   │   └── asgi.py
+│   │   └── base.py
+│   │   └── __init__.py
+│   │   └── local.py
+│   │   ├── media/
+│   │   │   └── *
+│   │   └── production.py
+│   │   ├── routes/
+│   │   │   └── admin.py
+│   │   │   ├── api/
+│   │   │   │   ├── v1/
+│   │   │   │   │   └── account.py
+│   │   │   │   │   └── urls.py
+│   │   │   └── hosts.py
+│   │   │   └── urls_api.py
+│   │   │   ├── urls_old/
+│   │   │   │   └── admin.py
+│   │   │   │   └── api.py
+│   │   │   └── urls.py
+│   │   └── settings.py
+│   │   └── urls.py
+│   │   └── wsgi.py
+│   └── README.md
+│   └── remove_migrations.sh
+│   └── structure.txt
+
 ```
 
 ## Passos para Executar o Projeto Localmente
@@ -45,7 +246,7 @@ git clone https://github.com/daniloftorres/mooney.github.io.git
 ### Executar com Docker Compose
 
 ```bash
-docker-compose -f docker-compose.local.yml up
+     docker-compose -f docker-compose.local.yml up
 ```
 
 ### Configuração de Hosts no Ubuntu
@@ -53,8 +254,8 @@ docker-compose -f docker-compose.local.yml up
 Adicione no arquivo hosts as configurações abaixo:
 
 ```
-127.0.0.1       admin.mooney.com
-127.0.0.1       api.mooney.com
+     127.0.0.1       admin.mooney.com
+     127.0.0.1       api.mooney.com
 ```
 
 # Documentação de Acesso
@@ -68,9 +269,12 @@ Para acessar a maioria dos endpoints, é necessário obter um token JWT e inclu�
 ### Obter Token JWT
 
 ```bash
-curl -X POST http://localhost:8000/v1/token/ \
-     -H "Content-Type: application/json" \
-     -d '{"username": "seu_usuario", "password": "sua_senha"}'
+     curl --location --request POST 'http://api.mooney.com/v1/token/' \
+     --header 'Content-Type: application/json' \
+     --data-raw '{
+     "username": "mooney",
+     "password": "mooney"
+     }'
 ```
 
 ### Refresh Token JWT
@@ -86,17 +290,23 @@ curl -X POST http://localhost:8000/v1/token/refresh/ \
 ### Obter Token via Client Credentials
 
 ```bash
-curl -X POST http://localhost:8000/v1/oauth2-client-credentials/ \
-     -H "Authorization: Basic <base64(client_id:client_secret)>" \
-     -d "grant_type=client_credentials"
+     curl --location --request POST 'http://api.mooney.com/v1/oauth2/token/' \
+     --header 'Content-Type: application/x-www-form-urlencoded' \
+     --data-urlencode 'client_id=76rpCwJqi34TCtR5euRlixQWBFfmt0zXYLvmYWDr' \
+     --data-urlencode 'client_secret=z63fKkzs9e3Ux22KlhnGvQNSYz1IIjdGr5OgIW228ZAmmebJckKyJPOzix4PfygE1VYrvf68KrT5BgqPyhPWolytvrcrSzXomXqgHA8u6xhILjwdqVHirPdMqVQESUCT' \
+     --data-urlencode 'grant_type=client_credentials'
 ```
 
 ### Obter Token via Password
 
 ```bash
-curl -X POST http://localhost:8000/v1/oauth2-password/ \
-     -H "Authorization: Basic <base64(client_id:client_secret)>" \
-     -d "grant_type=password&username=seu_usuario&password=sua_senha"
+     curl --location --request POST 'http://api.mooney.com/v1/oauth2/token/' \
+     --header 'Content-Type: application/x-www-form-urlencoded' \
+     --data-urlencode 'client_id=2LxBKN35djDbHhgvkMR7npMWWi0gKmtdlFyzVHQw' \
+     --data-urlencode 'client_secret=4FzCjVqfzipitUNMi3hZByGeRUDhDRkwCK9wVbJPN4CME8AxzGnh7KT6Gh6uMOBiCLexZ5EyBeLmPS1IVevpAlJjeionAUqRbZQQN9cG6NjTEtPdnNFDcnPw4znoPfK5' \
+     --data-urlencode 'username=mooney' \
+     --data-urlencode 'password=mooney' \
+     --data-urlencode 'grant_type=password'
 ```
 
 ## Sale Transaction
@@ -104,17 +314,43 @@ curl -X POST http://localhost:8000/v1/oauth2-password/ \
 ### Criar Sale Transaction
 
 ```bash
-curl -X POST http://localhost:8000/v1/service/sale/ \
-     -H "Authorization: Bearer seu_access_token" \
-     -H "Content-Type: application/json" \
-     -d '{"campo": "valor", "outro_campo": "outro_valor"}'
+     curl --location --request POST 'http://api.mooney.com/v1/sale/' \
+     --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEwMjczNTQzLCJpYXQiOjE3MTAyNzMyNDMsImp0aSI6ImY5OGU4N2FmNjk3YTQ0NmZhMzY2MTQzMWM1ZGRkOGY0IiwidXNlcl9pZCI6MX0.1ZgBgbU65J6m6adQOrf7bIDc3Iyk1zhT9_o7OeJOpkk' \
+     --header 'Content-Type: application/json' \
+     --data-raw '{
+     "status": "creation",
+     "user": 1,
+     "seller": 1,
+     "customer": 1,
+     "total_price": 90.00,
+     "total_discount": 10.00,
+     "total_amount":0.00,
+     "net_amount":0.00,
+     "total_discount_amount":0.00,
+     "items": [
+          {
+               "product": 4,
+               "quantity": 2,
+               "sale_price": 50.00,
+               "discount":10,
+               "amount":45.00
+          },
+          {
+               "product": 5,
+               "quantity": 1,
+               "sale_price": 50.00,
+               "discount":10,
+               "amount":45.00
+          }
+          ]
+     }'
 ```
 
 ### Obter Sale Transaction
 
 ```bash
-curl -X GET http://localhost:8000/v1/service/sale/<int:pk>/ \
-     -H "Authorization: Bearer seu_access_token"
+     curl --location --request GET 'http://api.mooney.com/v1/sale/10/' \
+     --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEwMjczNTQzLCJpYXQiOjE3MTAyNzMyNDMsImp0aSI6ImY5OGU4N2FmNjk3YTQ0NmZhMzY2MTQzMWM1ZGRkOGY0IiwidXNlcl9pZCI6MX0.1ZgBgbU65J6m6adQOrf7bIDc3Iyk1zhT9_o7OeJOpkk'
 ```
 
 ## Sale Transaction Item
@@ -122,33 +358,60 @@ curl -X GET http://localhost:8000/v1/service/sale/<int:pk>/ \
 ### Criar Sale Transaction Item
 
 ```bash
-curl -X POST http://localhost:8000/v1/service/sale/item/ \
-     -H "Authorization: Bearer seu_access_token" \
-     -H "Content-Type: application/json" \
-     -d '{"produto": produto_id, "quantidade": quantidade, "sale_price": preço}'
+     curl --location --request POST 'http://api.mooney.com/v1/sale/item/' \
+     --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEwMjczNTQzLCJpYXQiOjE3MTAyNzMyNDMsImp0aSI6ImY5OGU4N2FmNjk3YTQ0NmZhMzY2MTQzMWM1ZGRkOGY0IiwidXNlcl9pZCI6MX0.1ZgBgbU65J6m6adQOrf7bIDc3Iyk1zhT9_o7OeJOpkk' \
+     --header 'Content-Type: application/json' \
+     --data-raw '{
+     "sale_transaction_id": 10,
+     "quantity": 5,
+     "discount":10,
+     "sale_price": "50.00",
+     "sale_transaction": 10,
+     "product": 4
+     }'
 ```
 
 ### Obter Sale Transaction Item
 
 ```bash
-curl -X GET http://localhost:8000/v1/service/sale/item/<int:pk>/ \
-     -H "Authorization: Bearer seu_access_token"
+     curl --location --request GET 'http://api.mooney.com/v1/sale/item/11/' \
+     --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEwMjczNTQzLCJpYXQiOjE3MTAyNzMyNDMsImp0aSI6ImY5OGU4N2FmNjk3YTQ0NmZhMzY2MTQzMWM1ZGRkOGY0IiwidXNlcl9pZCI6MX0.1ZgBgbU65J6m6adQOrf7bIDc3Iyk1zhT9_o7OeJOpkk'
 ```
 
 ## Product
 
-### Listar ou Criar Produto
+### Criar Produto
 
 ```bash
-curl -X GET http://localhost:8000/v1/product/ \
-     -H "Authorization: Bearer seu_access_token"
+     curl --location --request POST 'http://api.mooney.com/v1/product/' \
+     --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEwMjczNTQzLCJpYXQiOjE3MTAyNzMyNDMsImp0aSI6ImY5OGU4N2FmNjk3YTQ0NmZhMzY2MTQzMWM1ZGRkOGY0IiwidXNlcl9pZCI6MX0.1ZgBgbU65J6m6adQOrf7bIDc3Iyk1zhT9_o7OeJOpkk' \
+     --header 'Content-Type: application/json' \
+     --data-raw '[
+          {
+               "name": "Mouse Gamer RGB",
+               "description": "Mouse gamer com iluminação RGB e 7200 DPI.",
+               "price": "150",
+               "category_id": 1
+          },
+          {
+               "name": "Teclado Mecânico",
+               "description": "Teclado mecânico com switches azuis para melhor resposta tátil.",
+               "price": "300",
+               "category_id": 1
+          }
+     ]'
 ```
 
+## Criar Categoria de Produto
+
 ```bash
-curl -X POST http://localhost:8000/v1/product/ \
-     -H "Authorization: Bearer seu_access_token" \
-     -H "Content-Type: application/json" \
-     -d '{"nome": "Nome do Produto", "categoria": categoria_id, ...}'
+     curl --location --request POST 'http://api.mooney.com/v1/product/category/' \
+     --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEwMjczNTQzLCJpYXQiOjE3MTAyNzMyNDMsImp0aSI6ImY5OGU4N2FmNjk3YTQ0NmZhMzY2MTQzMWM1ZGRkOGY0IiwidXNlcl9pZCI6MX0.1ZgBgbU65J6m6adQOrf7bIDc3Iyk1zhT9_o7OeJOpkk' \
+     --header 'Content-Type: application/json' \
+     --data-raw '{
+     "name": "Acessórios"
+     }
+     '
 ```
 
 ## Payment Method
@@ -156,10 +419,24 @@ curl -X POST http://localhost:8000/v1/product/ \
 ### Criar Método de Pagamento
 
 ```bash
-curl -X POST http://localhost:8000/v1/payment/method/ \
-     -H "Authorization: Bearer seu_access_token" \
-     -H "Content-Type: application/json" \
-     -d '{"tipo": "Tipo de Pagamento", "detalhes": "Detalhes do Pagamento"}'
+     curl --location --request POST 'http://api.mooney.com/v1/payment/method/' \
+     --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEwMjczNTQzLCJpYXQiOjE3MTAyNzMyNDMsImp0aSI6ImY5OGU4N2FmNjk3YTQ0NmZhMzY2MTQzMWM1ZGRkOGY0IiwidXNlcl9pZCI6MX0.1ZgBgbU65J6m6adQOrf7bIDc3Iyk1zhT9_o7OeJOpkk' \
+     --header 'Content-Type: application/json' \
+     --data-raw '[
+          {
+               "payment_type": "CSH",
+               "description": "Pagamento em dinheiro"
+          },
+          {
+               "payment_type": "CHK",
+               "description": "Pagamento com cheque"
+          }
+     ]'
 ```
 
-Substitua `"seu_access_token"`, `"seu_refresh_token"`, `"seu_usuario"`, `"sua_senha"`, `"produto_id"`, `"quantidade"`, `"preço"`, `"categoria_id"`, `"Tipo de Pagamento"`, `"Detalhes do Pagamento"`, e outros campos necessários conforme apropriado para suas requisições específicas.
+### Obter Método de Pagamento
+
+```bash
+     curl --location --request GET 'http://api.mooney.com/v1/payment/method/1/' \
+     --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEwMjczNTQzLCJpYXQiOjE3MTAyNzMyNDMsImp0aSI6ImY5OGU4N2FmNjk3YTQ0NmZhMzY2MTQzMWM1ZGRkOGY0IiwidXNlcl9pZCI6MX0.1ZgBgbU65J6m6adQOrf7bIDc3Iyk1zhT9_o7OeJOpkk'
+```

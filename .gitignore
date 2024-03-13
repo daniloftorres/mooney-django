@@ -5,8 +5,8 @@ mooney/media/
 docs/base
 docs/base/
 
-# structure.txt
-# docs
-# remove_migrations.sh
-# draw_tree.sh
-# clear_database.py
+docs
+clear_database.py
+draw_tree.sh
+structure.txt
+remove_migrations.sh
