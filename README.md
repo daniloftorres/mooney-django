@@ -1,103 +1,109 @@
 # Mooney Python API
 
-## Overview
+## Objetivo
 
-Mooney Python API é uma aplicação construída para gerenciar o fluxo completo de vendas, desde a criação da venda, adição de produtos, seleção de clientes e vendedores, até a finalização na área de finanças. Na área financeira, os usuários podem visualizar e gerenciar todas as entradas e parcelas resultantes das vendas. Este projeto aplica conceitos de SOLID e Design de Serviço para criar uma solução robusta e escalável.
+Gerenciar requisições de um fluxo de venda, partindo da criação da venda, adicionando produtos, selecionando cliente e vendedor, e finalizando na área de finanças onde o usuário poderá ver e gerenciar todas as entradas e parcelas realizadas pelas vendas.
 
 ## Tecnologias Utilizadas
 
 - Python
 - Django
-- Django Rest Framework
 - Docker
 - API REST
 
-## Conceitos
+## Conceitos Trabalhados
 
-- SOLID Principles
+- Alguns conceitos de SOLID
 - Design de Serviço
-- Autenticação e Autorização
-- Trabalho com Docker e Docker Compose
 
 ## Estrutura de Arquivos e Pastas
 
-A estrutura do projeto segue um modelo modular, facilitando a compreensão e manutenção do código. Cada módulo é responsável por uma parte específica da lógica de negócio, organizados da seguinte forma:
-
 ```
-mooney/
-├── apps/
-│   ├── account/
-│   ├── core/
-│   ├── customer/
-│   ├── erp/
-│   │   ├── payment/
-│   │   └── transaction/
-│   └── product/
-├── config/
-│   ├── local/
-│   └── production/
-├── mooney/
-│   ├── asgi.py
-│   ├── settings.py
-│   └── urls.py
-└── docker-compose.yml
+<detalhe da estrutura de arquivos omitido para brevidade>
 ```
 
-## Como Executar o Projeto Localmente
+## Passos para Executar o Projeto Localmente
 
 ### Pré-requisitos
 
 - Git
-- Python 3.x
+- Python
 - Pip
 - Docker
 - Docker Compose
 
-### Configuração do Ambiente
+### Ambiente de Testes
 
-O projeto foi testado em um ambiente Ubuntu, mas pode ser executado em qualquer sistema operacional que suporte as tecnologias utilizadas.
+- Ubuntu
 
-### Clonando o Projeto
+### Clonar o Repositório
 
 ```bash
 git clone https://github.com/daniloftorres/mooney.github.io.git
 ```
 
-### Executando com Docker Compose
+### Executar com Docker Compose
 
 ```bash
 docker-compose -f docker-compose.local.yml up
 ```
 
-### Configuração do Hosts no Ubuntu
+### Configuração de Hosts no Ubuntu
 
-Adicione as seguintes linhas ao arquivo `/etc/hosts`:
+Adicione no arquivo hosts as configurações abaixo:
 
 ```
 127.0.0.1       admin.mooney.com
 127.0.0.1       api.mooney.com
 ```
 
-### Checagem do Sistema
+## Autenticação e Uso da API
 
-Após iniciar os serviços com Docker Compose, você pode acessar a API em `http://api.mooney.com` e o painel de administração em `http://admin.mooney.com`.
+### Autenticação JWT
 
-## Utilizando a API
+- **Obter Token JWT**
 
-A Mooney API utiliza autenticação JWT para a maioria dos endpoints. É necessário obter um token JWT e incluí-lo no cabeçalho das requisições para acessar os recursos protegidos.
+  ```bash
+  curl -X POST http://localhost:8000/v1/token/        -H "Content-Type: application/json"        -d '{"username": "seu_usuario", "password": "sua_senha"}'
+  ```
 
-### Exemplos de Requisições
+- **Refresh Token JWT**
+  ```bash
+  curl -X POST http://localhost:8000/v1/token/refresh/        -H "Content-Type: application/json"        -d '{"refresh": "seu_refresh_token"}'
+  ```
 
-A documentação detalhada para interagir com cada endpoint está disponível na documentação da API, que pode ser acessada após iniciar o projeto. Seguem alguns exemplos de como utilizar os endpoints principais:
+### Autenticação OAuth2
 
-- **Obter Token JWT:**
+- **Obter Token via Client Credentials**
 
-```bash
-curl -X POST http://api.mooney.com/v1/token/      -H "Content-Type: application/json"      -d '{"username": "seu_usuario", "password": "sua_senha"}'
-```
+  ```bash
+  curl -X POST http://localhost:8000/v1/oauth2-client-credentials/        -H "Authorization: Basic <base64(client_id:client_secret)>"        -d "grant_type=client_credentials"
+  ```
 
-- **Criar Sale Transaction:**
+- **Obter Token via Password**
+  ```bash
+  curl -X POST http://localhost:8000/v1/oauth2-password/        -H "Authorization: Basic <base64(client_id:client_secret)>"        -d "grant_type=password&username=seu_usuario&password=sua_senha"
+  ```
 
-```bash
-curl -X POST http://api.mooney.com/v1/service/sale/      -H "Authorization: Bearer seu_access_token"      -H "Content-Type: application/json"      -d '{"customer": "id_do_cliente", "seller": "id_do_vendedor", ...}'
-```
+### Exemplos de Uso da API
+
+- **Sale Transaction**
+
+  - Criar Sale Transaction
+  - Obter Sale Transaction
+
+- **Sale Transaction Item**
+
+  - Criar Sale Transaction Item
+  - Obter Sale Transaction Item
+
+- **Product**
+
+  - Listar ou Criar Produto
+
+- **Payment Method**
+  - Criar Método de Pagamento
+
+## Documentação de Acesso
+
+Para mais detalhes sobre como acessar e interagir com a Mooney API, consulte a documentação completa.
