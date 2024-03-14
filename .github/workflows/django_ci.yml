@@ -53,7 +53,7 @@ jobs:
         run: python manage.py test
 
       - name: Build Docker image
-        run: docker build -f ./config/local/Dockerfile . -t mooney-django:latest -t mooney-django:${{ github.sha }}
+        run: docker build -f ./config/local/Dockerfile . -t danilotorres/mooney-django:latest -t danilotorres/mooney-django:${{ github.sha }}
 
       - name: Login to Docker Hub
         uses: docker/login-action@v1
@@ -63,5 +63,5 @@ jobs:
 
       - name: Push Docker image to Docker Hub
         run: |
-          docker push mooney-django:latest
-          docker push mooney-django:${{ github.sha }}
+          docker push danilotorres/mooney-django:latest
+          docker push danilotorres/mooney-django:${{ github.sha }}
