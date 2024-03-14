@@ -39,9 +39,6 @@ jobs:
       - name: Copy .env file
         run: cp ./config/local/.env.local ./.env
 
-      - name: Copy entrypoint.sh file
-        run: cp ./config/local/entrypoint.sh ./entrypoint.sh
-
       - name: Definir Variáveis de Ambiente
         run: |
           echo "SECRET_KEY=${{ secrets.SECRET_KEY }}" >> $GITHUB_ENV
@@ -56,7 +53,7 @@ jobs:
         run: python manage.py test
 
       - name: Build Docker image
-        run: docker build ./config/local -t mooney-django:latest -t mooney-django:${{ github.sha }}
+        run: docker build -f ./config/local/Dockerfile . -t mooney-django:latest -t mooney-django:${{ github.sha }}
 
       - name: Login to Docker Hub
         uses: docker/login-action@v1
