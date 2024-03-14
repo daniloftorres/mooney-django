@@ -30,6 +30,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECRET_KEY = 'django-insecure-*gq8)xj3ufyb#myla^9isdr4p44oe5pgb7t)%7i(i&&3@42q(e'
 # print("GET DADOS DB ENV SECRET_KEY:: ", os.getenv('SECRET_KEY'))
 SECRET_KEY = os.getenv('SECRET_KEY')
+print("######")
+print("## SECRET_KEY :: ", SECRET_KEY)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 

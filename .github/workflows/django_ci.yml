@@ -39,6 +39,10 @@ jobs:
       - name: Copy .env file
         run: cp ./config/local/.env.local ./.env
 
+      - name: Definir Variáveis de Ambiente
+        run: |
+          echo "SECRET_KEY=${{ secrets.SECRET_KEY }}" >> $GITHUB_ENV
+
       - name: Run migrations
         run: python manage.py migrate
 
