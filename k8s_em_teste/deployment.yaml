@@ -1,0 +1,15 @@
+- name: Set up Kubectl
+  uses: azure/setup-kubectl@v1
+  with:
+    version: "v1.18.0"
+
+- name: Configure Kubernetes context
+  uses: azure/k8s-set-context@v1
+  with:
+    method: kubeconfig
+    kubeconfig: "${{ secrets.KUBECONFIG }}"
+
+- name: Deploy to Kubernetes
+  run: |
+    kubectl apply -f k8s/deployment.yaml
+    kubectl rollout status deployment/mooney-django
