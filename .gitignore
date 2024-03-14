@@ -10,3 +10,4 @@ clear_database.py
 draw_tree.sh
 structure.txt
 remove_migrations.sh
+features.md
