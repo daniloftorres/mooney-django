@@ -110,7 +110,7 @@ USE_I18N = True
 # Use datas e números localizados
 USE_L10N = True
 
-
+# teste
 # ROOT_URLCONF = 'mooney.routes.urls'
 ROOT_URLCONF = 'mooney.routes.urls_api'
 ROOT_URLADMIN = 'mooney.routes.admin'

@@ -41,21 +41,6 @@ urlpatterns = [
          name='oauth2-password'),
 ] + urlpatterns
 
-# product
-urlpatterns = [
-
-    # path('v1/product/', ProductListCreateAPIView.as_view(),
-    #     name="product_list_create"),
-    # path('v1/product/<int:pk>/', ProductListCreateAPIView.as_view(),
-    #     name="product_list"),
-
-
-    # path('v1/product/category/', ProductCategoryListCreateAPIView.as_view(),
-    #     name="product_category_create"),
-    # path('v1/product/category/<int:pk>/', ProductCategoryListCreateAPIView.as_view(),
-    #    name="product_category_list"),
-] + urlpatterns
-
 # payment
 urlpatterns = [
     path('v1/payment/method/', PaymentMethodListCreateAPIView.as_view(),
@@ -99,6 +84,18 @@ urlpatterns = [
          name="sale_transaction_service_payment_create"),
     path('v1/service/sale/payment/<int:pk>/', SaleTransactionPaymentMethodServiceAPI.as_view(),
          name="sale_transaction_service_payment_get")
+] + urlpatterns
+
+# product
+urlpatterns = [
+    path('v1/product/', ProductListCreateAPIView.as_view(),
+         name="product_list_create"),
+    path('v1/product/<int:pk>/', ProductListCreateAPIView.as_view(),
+         name="product_list"),
+    path('v1/product/category/', ProductCategoryListCreateAPIView.as_view(),
+         name="product_category_list_create"),
+    path('v1/product/category/<int:pk>/', ProductCategoryListCreateAPIView.as_view(),
+         name="product_category_list")
 ] + urlpatterns
 
 urlpatterns = [

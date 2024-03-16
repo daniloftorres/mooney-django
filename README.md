@@ -434,10 +434,17 @@ curl -X POST http://localhost:8000/v1/token/refresh/ \
      curl --location --request POST 'http://api.mooney.com/v1/product/category/' \
      --header 'Authorization: Bearer {{access_token}}' \
      --header 'Content-Type: application/json' \
-     --data-raw '{
-     "name": "Acessórios"
+     --data-raw '[
+     {
+          "name": "Periféricos"
+     },
+     {
+          "name": "Componentes"
+     },
+     {
+          "name": "Acessórios"
      }
-     '
+     ]'
 ```
 
 ### Criar Produto
