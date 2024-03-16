@@ -675,7 +675,7 @@ curl -X POST http://localhost:8000/v1/token/refresh/ \
 ### Atualizar Sale Payment Method
 
 ```bash
-     curl --location --request PUT 'http://api.mooney.com/v1/service/sale/item/1/' \
+     curl --location --request PUT 'http://api.mooney.com/v1/service/sale/payment/1/' \
      --header 'Authorization: Bearer {{access_token}}' \
      --header 'Content-Type: application/json' \
      --data-raw '{
@@ -690,13 +690,13 @@ curl -X POST http://localhost:8000/v1/token/refresh/ \
 ### Obter Sale Payment Method
 
 ```bash
-     curl --location --request GET 'http://api.mooney.com/v1/sale/item/1/' \
+     curl --location --request GET 'http://api.mooney.com/v1/service/sale/payment/1/' \
      --header 'Authorization: Bearer {{access_token}}'
 ```
 
 ### Remover Sale Payment Method
 
 ```bash
-     curl --location --request DELETE 'http://api.mooney.com/v1/service/sale/item/1/' \
-     --header 'Authorization: Bearer {{access_token}}
+     curl --location --request DELETE 'http://api.mooney.com/v1/service/sale/payment/1/' \
+     --header 'Authorization: Bearer {{access_token}}'
 ```
