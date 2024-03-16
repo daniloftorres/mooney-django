@@ -594,7 +594,7 @@ curl -X POST http://localhost:8000/v1/token/refresh/ \
 ### Update Sale Transaction
 
 ```bash
-     curl --location --request PUT 'http://api.mooney.com/v1/service/sale/14/' \
+     curl --location --request PUT 'http://api.mooney.com/v1/service/sale/1/' \
      --header 'Authorization: Bearer {{access_token}}' \
      --header 'Content-Type: application/json' \
      --data-raw '{
@@ -612,22 +612,91 @@ curl -X POST http://localhost:8000/v1/token/refresh/ \
 ### Criar Sale Transaction Item
 
 ```bash
-     curl --location --request POST 'http://api.mooney.com/v1/sale/item/' \
+     curl --location --request POST 'http://api.mooney.com/v1/service/sale/item/' \
      --header 'Authorization: Bearer {{access_token}}' \
      --header 'Content-Type: application/json' \
      --data-raw '{
-     "sale_transaction_id": 10,
-     "quantity": 5,
-     "discount":10,
-     "sale_price": "50.00",
-     "sale_transaction": 10,
-     "product": 4
+          "quantity": 5,
+          "discount":10,
+          "sale_price": "50.00",
+          "sale_transaction": 1,
+          "product": 1
+     }'
+```
+
+### Atualizar Sale Transaction Item
+
+```bash
+     curl --location --request PUT 'http://api.mooney.com/v1/service/sale/item/1/' \
+     --header 'Authorization: Bearer {{access_token}}' \
+     --header 'Content-Type: application/json' \
+     --data-raw '{
+          "quantity": 5,
+          "discount":10,
+          "sale_price": "50.00",
+          "sale_transaction": 1,
+          "product": 1
      }'
 ```
 
 ### Obter Sale Transaction Item
 
 ```bash
-     curl --location --request GET 'http://api.mooney.com/v1/sale/item/11/' \
+     curl --location --request GET 'http://api.mooney.com/v1/sale/item/1/' \
      --header 'Authorization: Bearer {{access_token}}'
+```
+
+### Remover Sale Transaction Item
+
+```bash
+     curl --location --request DELETE 'http://api.mooney.com/v1/service/sale/item/1/' \
+     --header 'Authorization: Bearer {{access_token}}
+```
+
+## Sale Payment Method
+
+### Criar Sale Payment Method
+
+```bash
+     curl --location --request POST 'http://api.mooney.com/v1/service/sale/payment/' \
+     --header 'Authorization: Bearer {{access_token}}' \
+     --header 'Content-Type: application/json' \
+     --data-raw '{
+          "sale_transaction": 2,
+          "payment_method": 3,
+          "total_amount": "100",
+          "installment": 1,
+          "payer_cpf_cnpj":"",
+          "number":"",
+          "name_card_holder":""
+     }'
+```
+
+### Atualizar Sale Payment Method
+
+```bash
+     curl --location --request PUT 'http://api.mooney.com/v1/service/sale/item/1/' \
+     --header 'Authorization: Bearer {{access_token}}' \
+     --header 'Content-Type: application/json' \
+     --data-raw '{
+          "quantity": 5,
+          "discount":10,
+          "sale_price": "50.00",
+          "sale_transaction": 1,
+          "product": 1
+     }'
+```
+
+### Obter Sale Payment Method
+
+```bash
+     curl --location --request GET 'http://api.mooney.com/v1/sale/item/1/' \
+     --header 'Authorization: Bearer {{access_token}}'
+```
+
+### Remover Sale Payment Method
+
+```bash
+     curl --location --request DELETE 'http://api.mooney.com/v1/service/sale/item/1/' \
+     --header 'Authorization: Bearer {{access_token}}
 ```

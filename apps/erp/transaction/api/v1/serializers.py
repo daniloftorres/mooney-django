@@ -59,6 +59,8 @@ class SaleTransactionSerializer(serializers.ModelSerializer):
         required=False, allow_null=True, max_digits=10, decimal_places=2)
     tax_amount = serializers.DecimalField(
         required=False, allow_null=True, max_digits=10, decimal_places=2)
+    total_due = serializers.DecimalField(
+        required=False, allow_null=True, max_digits=10, decimal_places=2)
     sale_date = serializers.DateTimeField(required=False, allow_null=True)
 
     items = SaleTransactionItemSerializer(required=False, many=True)
