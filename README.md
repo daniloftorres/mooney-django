@@ -344,26 +344,15 @@ Para acessar a maioria dos endpoints, é necessário obter um token JWT e inclu�
      }'
 ```
 
-- se estiver usando algum programa para testes de api como o postman, voce pode automatizar o token para ser configurado:
-
-  - Caso tiver o postman veja aqui como fazer:
-  - [Variavel de Ambiente no Postman](documentation/postman/var-enviroment.md)
-
-```bash
-     var jsonData = pm.response.json();
-     pm.environment.set("access_token", jsonData.access);
-```
-
-- Configurando o token para todas as requests seguinte (executar esse processo em cada request testada)
-  1.  Na aba : Authorization selecione a opção Bearer Token
-  2.  No campo token adicione : {{access_token}} (nome da variavel de ambiente criada para inserir o token)
-
 ### Refresh Token JWT
 
 ```bash
-curl -X POST http://localhost:8000/v1/token/refresh/ \
-     -H "Content-Type: application/json" \
-     -d '{"refresh": "seu_refresh_token"}'
+     curl --location --request POST 'http://api.mooney.com/v1/token/refresh/' \
+     --header 'Content-Type: application/json' \
+     --data-raw '{
+     "refresh": "{{refresh_token}}"
+     }
+     '
 ```
 
 ## Autenticação OAuth2
@@ -389,6 +378,16 @@ curl -X POST http://localhost:8000/v1/token/refresh/ \
      --data-urlencode 'password=mooney' \
      --data-urlencode 'grant_type=password'
 ```
+
+## Postman
+
+Algumas configuração para quem usa Postman como programa para testar as API, mas o conceito serve para quase todos no mesmo genero:
+
+- [Configuração básica para uso do Postman](documentation/postman/var-enviroment.md)
+
+1. Criar Variaveis de Ambiente.
+2. Configurar script para quando o request de obtenção do token tiver retorno, capturar o token para savar em nossa variavel de ambiente.
+3. Adicionar a variavel de ambiente nas requests dentro do Authozitation : Bearer Token
 
 ## Cliente
 

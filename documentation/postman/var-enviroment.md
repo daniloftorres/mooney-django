@@ -39,3 +39,46 @@ Este tutorial ensina como criar e usar variáveis de ambiente no Postman, tornan
 ## Passo 5: Usar Variáveis nas Requisições
 
 Para usar uma variável em uma requisição, insira o nome da variável entre chaves duplas, como `{{base_url}}`. O Postman substituirá automaticamente `{{base_url}}` pelo valor da variável do ambiente ativo quando você enviar a requisição.
+
+# Configurar Script para Obtenção e Armazenamento do Token em Variável de Ambiente
+
+Este tutorial descreve como configurar um script no Postman para capturar automaticamente um token de autenticação do corpo de uma resposta e salvar esse token em uma variável de ambiente.
+
+### Passo 1: Enviar Requisição de Obtenção de Token
+
+1. Crie ou selecione a requisição responsável por obter o token de autenticação.
+2. Certifique-se de que a requisição está configurada corretamente e que o servidor responde com o token no corpo da resposta.
+
+### Passo 2: Configurar o Script de Teste
+
+1. Na requisição de obtenção do token, vá para a aba **"Tests"**.
+2. Adicione o seguinte script:
+
+```javascript
+var jsonData = pm.response.json();
+pm.environment.set("access_token", jsonData.access_token);
+```
+
+Este script extrai o `access_token` do corpo da resposta JSON e o salva em uma variável de ambiente chamada `access_token`.
+
+### Passo 3: Salvar e Enviar a Requisição
+
+1. Salve a requisição.
+2. Envie a requisição e verifique se o token foi corretamente capturado e salvo na variável de ambiente.
+
+## Adicionar a Variável de Ambiente nas Requests no Campo Authorization
+
+Após configurar e armazenar o token de autenticação como uma variável de ambiente, você pode usá-lo em outras requisições para autenticação.
+
+### Passo 1: Configurar o Cabeçalho de Autorização
+
+1. Em qualquer requisição que requeira autenticação, vá para a aba **"Authorization"**.
+2. No tipo de autenticação, selecione **"Bearer Token"**.
+3. No campo do token, insira a variável de ambiente que contém o token no formato `{{access_token}}`.
+
+### Passo 2: Enviar a Requisição
+
+1. Envie a requisição.
+2. O Postman substituirá automaticamente `{{access_token}}` pelo valor da variável de ambiente, autenticando a requisição.
+
+Com esses passos, você pode automatizar o processo de autenticação em suas requisições, melhorando a eficiência dos testes no Postman.
