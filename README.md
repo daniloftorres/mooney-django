@@ -323,7 +323,7 @@ Adicione no arquivo hosts as configurações abaixo:
   ```
 
 Tente acessar a url : http://admin.mooney.com/
-Se admin o login do admin django, tudo foi um sucesso ate agora.
+Se o login do admin django for exibido, tudo foi um sucesso ate agora.
 
 # API
 
@@ -344,12 +344,10 @@ Para acessar a maioria dos endpoints, é necessário obter um token JWT e inclu�
      }'
 ```
 
-- se estiver usando algum client de api como o postman, voce pode automatizar o token para ser configurado nas apis seguintes:
-  1.  Primeiro crie um ambiente de variavel novo
-  2.  Crie uma variavel chamada : access_token
-  3.  No request que pega o token, vá ate na aba: tests
-  4.  Adicione o script abaixo
-      Com isso, ao pegar o token, voce adiciona o valor em uma variavel para usar como autenticador em outros requests.
+- se estiver usando algum programa para testes de api como o postman, voce pode automatizar o token para ser configurado:
+
+  - Caso tiver o postman veja aqui como fazer:
+  - [Variavel de Ambiente no Postman](documentation/postman/var-enviroment.md)
 
 ```bash
      var jsonData = pm.response.json();
