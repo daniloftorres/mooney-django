@@ -5,7 +5,7 @@ from apps.product.models import Product, ProductCategory, ProductImage
 class ProductCategorySerializer (serializers.ModelSerializer):
     class Meta:
         model = ProductCategory
-        fields = ['name']
+        fields = '__all__'
 
 
 class ProductImageSerializer (serializers.ModelSerializer):
