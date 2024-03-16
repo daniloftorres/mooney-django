@@ -4,6 +4,23 @@ from django.utils.translation import gettext_lazy as _
 from apps.core import models as models_base
 from django.dispatch import receiver
 
+"""
+/*
+Periféricos
+Componentes
+Acessórios
+{
+  "name": "Periféricos"
+}
+{
+  "name": "Componentes"
+}
+{
+  "name": "Acessórios"
+}
+*/
+"""
+
 
 class ProductCategory(models_base.TimeStampedModel, models_base.SoftDeletionModel):
     name = models.CharField(max_length=255, verbose_name=_("Name"))
@@ -21,7 +38,7 @@ class ProductCategory(models_base.TimeStampedModel, models_base.SoftDeletionMode
         return self.name
 
 
-class Product(models.Model):
+class Product(models_base.TimeStampedModel, models_base.SoftDeletionModel):
     name = models.CharField(max_length=255, verbose_name=_("Name"))
     description = models.TextField(blank=True, verbose_name=_("Description"))
     price = models.DecimalField(
@@ -38,7 +55,7 @@ class Product(models.Model):
         return self.name
 
 
-class ProductImage(models.Model):
+class ProductImage(models_base.TimeStampedModel, models_base.SoftDeletionModel):
     product = models.ForeignKey(
         Product, on_delete=models.CASCADE, related_name='images', verbose_name=_("Product"))
     image = models.ImageField(upload_to='products/', verbose_name=_("Image"))
@@ -61,7 +78,7 @@ class ProductImage(models.Model):
         super().save(*args, **kwargs)
 
 
-class ProductStock(models.Model):
+class ProductStock(models_base.TimeStampedModel, models_base.SoftDeletionModel):
     product = models.OneToOneField(
         Product, on_delete=models.CASCADE, related_name='stock')
     quantity = models.PositiveIntegerField(default=0)
@@ -99,6 +116,11 @@ class ProductStock(models.Model):
 
     def __str__(self):
         return f"{self.product.name} - In stock: {self.quantity}, Reserved: {self.quantity_reserved}"
+
+    class Meta:
+        verbose_name = _("Product Stock")
+        verbose_name_plural = _("Products Stock")
+        db_table = 'product_stock'
 
 
 @receiver(post_save, sender=Product)

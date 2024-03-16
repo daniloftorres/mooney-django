@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from apps.erp.transaction.models import Transaction, SaleTransaction, SaleTransactionItem, PaymentMethodSaleTransaction, PaymentInstallmentSaleTransaction
+from apps.erp.transaction.models import Transaction, SaleTransaction, SaleTransactionItem, SaleTransactionPaymentInstallment, SaleTransactionPaymentMethod
 # from apps.sale.api.v1.serializers import SaleSerializer
 from apps.account.models import CustomUser as User
 from apps.customer.models import Customer
@@ -9,7 +9,7 @@ from apps.product.models import Product
 class PaymentMethodSaleTransaction(serializers.ModelSerializer):
 
     class Meta:
-        model = PaymentMethodSaleTransaction
+        model = SaleTransactionPaymentMethod
         fields = ('__all__')
 
 
@@ -32,17 +32,17 @@ class SaleTransactionItemSerializer(serializers.ModelSerializer):
         return sale_trasaction_item
 
 
-class PaymentInstallmentSaleTransactionSerializer(serializers.ModelSerializer):
+class SaleTransactionPaymentInstallmentSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = PaymentInstallmentSaleTransaction
+        model = SaleTransactionPaymentInstallment
         fields = ('__all__')
 
 
-class PaymentMethodSaleTransactionSerializer(serializers.ModelSerializer):
+class SaleTransactionPaymentMethodSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = PaymentMethodSaleTransaction
+        model = SaleTransactionPaymentMethod
         fields = ('__all__')
 
 
@@ -62,9 +62,9 @@ class SaleTransactionSerializer(serializers.ModelSerializer):
     sale_date = serializers.DateTimeField(required=False, allow_null=True)
 
     items = SaleTransactionItemSerializer(required=False, many=True)
-    payment_methods = PaymentMethodSaleTransactionSerializer(
+    payment_methods = SaleTransactionPaymentMethodSerializer(
         required=False, many=True)
-    payment_installments = PaymentInstallmentSaleTransactionSerializer(
+    payment_installments = SaleTransactionPaymentInstallmentSerializer(
         required=False, allow_null=True, many=True)
 
     class Meta:

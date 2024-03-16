@@ -1,8 +1,9 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+from apps.core import models as models_base
 
 
-class Customer(models.Model):
+class Customer(models_base.TimeStampedModel, models_base.SoftDeletionModel):
     name = models.CharField(max_length=100, verbose_name=_(
         "Name"), blank=True, null=True)
     email = models.EmailField(verbose_name=_("Email"), blank=True, null=True)
