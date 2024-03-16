@@ -418,18 +418,6 @@ curl -X POST http://localhost:8000/v1/token/refresh/ \
 
 ### Criar Categoria de Produto
 
-```json
-     {
-          "name": "Periféricos"
-     }
-     {
-          "name": "Componentes"
-     }
-     {
-          "name": "Acessórios"
-     }
-```
-
 ```bash
      curl --location --request POST 'http://api.mooney.com/v1/product/category/' \
      --header 'Authorization: Bearer {{access_token}}' \
