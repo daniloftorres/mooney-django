@@ -305,34 +305,46 @@ Adicione no arquivo hosts as configurações abaixo:
 - Django
 
   - Vamos acessar o container para criar um super usuário
+    #o usuario é apenas de exemplo, voce pode criar conforme preferir
 
   ```bash
-  #o usuario é apenas de exemplo, voce pode criar conforme preferir
   docker exec -it mooney-django_django_1 python manage.py createsuperuser
   ```
 
-# complete os dados pedido
+  - complete os dados pedido
 
-Username: mooney
-Email: mooney@mooney.com
-Password: mooney
+    Username: mooney
 
-# como nossa senha é pequena ele vai dar um alerta, para confirmar, apenas digite o y
+    ```bash
+    mooney
+    ```
 
-Password:mooney
-Password (again):mooney
-#The password is too similar to the username.
-#This password is too short. It must contain at least 8 characters.
-Bypass password validation and create user anyway? [y/N]: y
+    Email: mooney@mooney.com
 
-remover-doc docker exec -it mooney-django-simulation_django_1 python manage.py createsuperuser
-echo "from django.contrib.auth.models import User; User.objects.create_superuser('mooney', 'email@example.com', 'password')" | python manage.py shell
-echo "from apps.account.models import CustomUser; CustomUser.objects.filter(username='mooney').delete()" | python manage.py shell
+    ```bash
+    mooney@mooney.com
+    ```
 
-````
+    Password: mooney
 
-Tente acessar a url : http://admin.mooney.com/
-Se o login do admin django for exibido, tudo foi um sucesso ate agora.
+    ```bash
+    mooney
+    ```
+
+  - como nossa senha é pequena ele vai dar um alerta, para confirmar, apenas digite o y
+
+    Password (again):mooney
+    #The password is too similar to the username.
+    #This password is too short. It must contain at least 8 characters.
+    Bypass password validation and create user anyway? [y/N]: y
+
+  - trecho admin remover
+    remover-doc docker exec -it mooney-django-simulation_django_1 python manage.py createsuperuser
+    echo "from django.contrib.auth.models import User; User.objects.create_superuser('mooney', 'email@example.com', 'password')" | python manage.py shell
+    echo "from apps.account.models import CustomUser; CustomUser.objects.filter(username='mooney').delete()" | python manage.py shell
+
+  - Tente acessar a url : http://admin.mooney.com/
+    Se o login do admin django for exibido, tudo foi um sucesso ate agora.
 
 # API
 
@@ -351,7 +363,7 @@ curl --location --request POST 'http://api.mooney.com/v1/token/' \
 "username": "mooney",
 "password": "mooney"
 }'
-````
+```
 
 ### Refresh Token JWT
 
