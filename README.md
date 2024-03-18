@@ -287,8 +287,13 @@ Adicione no arquivo hosts as configurações abaixo:
 
 ```bash
 docker exec -it mooney-django_django_1 python manage.py makemigrations
-docker exec -it mooney-django_django_1 python manage.py migrate
+```
 
+```bash
+docker exec -it mooney-django_django_1 python manage.py migrate
+```
+
+```bash
 remover-doc docker exec -it mooney-django-simulation_django_1 python manage.py makemigrations
 remover-doc docker exec -it mooney-django-simulation_django_1 python manage.py migrate
 ```
