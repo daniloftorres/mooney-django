@@ -141,11 +141,8 @@ class SaleTransactionPaymentInstallmentService:
 
     def create_sale_transaction_payment_installment(validated_data):
 
-        payment_installment = SaleTransactionPaymentMethod.objects.create(
+        return SaleTransactionPaymentInstallment.objects.create(
             **validated_data)
-        if payment_installment:
-            SaleTransactionPaymentMethodService.get_total_status(
-                validated_data)
 
         return payment_installment
 
@@ -165,6 +162,7 @@ class SaleTransactionPaymentMethodService:
         except SaleTransactionPaymentMethod.DoesNotExist:
             raise Http404
 
+    @staticmethod
     @transaction.atomic
     def create_sale_transaction_payment_method(validated_data):
 
@@ -249,9 +247,10 @@ class SaleTransactionPaymentMethodService:
                         'tax_amount': 0,
                         'notes': '',
                     }
-                    SaleTransactionPaymentInstallment.objects.create(
-                        **sale_transaction_payment_installment)
-                    # SaleTransactionPaymentInstallmentService.create_sale_transaction_payment_installment()
+                    """SaleTransactionPaymentInstallment.objects.create(
+                        **sale_transaction_payment_installment)"""
+                    SaleTransactionPaymentInstallmentService.create_sale_transaction_payment_installment(
+                        sale_transaction_payment_installment)
         else:
             sale_transaction_payment_installment = {
                 'sale_transaction': validated_data['sale_transaction'],
@@ -266,9 +265,10 @@ class SaleTransactionPaymentMethodService:
                 'tax_amount': 0,
                 'notes': '',
             }
-            SaleTransactionPaymentInstallment.objects.create(
-                **sale_transaction_payment_installment)
-            # SaleTransactionPaymentInstallmentService.create_sale_transaction_payment_installment()
+            """SaleTransactionPaymentInstallment.objects.create(
+                **sale_transaction_payment_installment)"""
+            SaleTransactionPaymentInstallmentService.create_sale_transaction_payment_installment(
+                sale_transaction_payment_installment)
 
         # preparing final return
         # get total amount
@@ -284,19 +284,15 @@ class SaleTransactionPaymentMethodService:
         SaleTransaction.objects.filter(
             id=sale_transaction_id).update(total_due=total_due)
 
-        print("valores para calculo")
-        print(sale_transaction.total_amount)
-        print(payments)
-
         total_due = sale_transaction.total_amount - payments
         SaleTransaction.objects.filter(
             id=sale_transaction_id).update(total_due=total_due)
 
         return payment_method_created
 
+    @staticmethod
+    @transaction.atomic
     def update_sale_transaction_payment_method(instance, validated_data, sale_transaction_payment_method_id):
-
-        print("### into update")
 
         sale_transaction_id = validated_data['sale_transaction'].id
         payment_total_amount = validated_data['total_amount']
@@ -319,8 +315,6 @@ class SaleTransactionPaymentMethodService:
         # update
         payment_method_updated = SaleTransactionPaymentMethod.objects.filter(id=sale_transaction_payment_method_id).update(
             **validated_data)
-
-        print("#retorno update", payment_method_updated)
 
         # if there is installmente, than recreate they
         if payment_method_updated > 0:
@@ -385,9 +379,10 @@ class SaleTransactionPaymentMethodService:
                             'tax_amount': 0,
                             'notes': '',
                         }
-                        SaleTransactionPaymentInstallment.objects.create(
-                            **sale_transaction_payment_installment)
-                        # SaleTransactionPaymentInstallmentService.create_sale_transaction_payment_installment()
+                        """SaleTransactionPaymentInstallment.objects.create(
+                            **sale_transaction_payment_installment)"""
+                        SaleTransactionPaymentInstallmentService.create_sale_transaction_payment_installment(
+                            sale_transaction_payment_installment)
             else:
                 sale_transaction_payment_installment = {
                     'sale_transaction': validated_data['sale_transaction'],
@@ -402,9 +397,10 @@ class SaleTransactionPaymentMethodService:
                     'tax_amount': 0,
                     'notes': '',
                 }
-                SaleTransactionPaymentInstallment.objects.create(
-                    **sale_transaction_payment_installment)
-                # SaleTransactionPaymentInstallmentService.create_sale_transaction_payment_installment()
+                """SaleTransactionPaymentInstallment.objects.create(
+                    **sale_transaction_payment_installment)"""
+                SaleTransactionPaymentInstallmentService.create_sale_transaction_payment_installment(
+                    sale_transaction_payment_installment)
 
             # preparing final return
             # get total amount
@@ -413,16 +409,11 @@ class SaleTransactionPaymentMethodService:
             payments = payments.aggregate(
                 total=Sum(F('total_amount')))['total']
             payments = 0 if payments is None else payments
-
             total_due = sale_transaction.total_amount - payments
 
             # update total due
             SaleTransaction.objects.filter(
                 id=sale_transaction_id).update(total_due=total_due)
-
-            print("valores para calculo")
-            print(sale_transaction.total_amount)
-            print(payments)
 
             total_due = sale_transaction.total_amount - payments
             SaleTransaction.objects.filter(

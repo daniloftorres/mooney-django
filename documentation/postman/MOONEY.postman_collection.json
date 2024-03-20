@@ -1,0 +1,1811 @@
+{
+	"info": {
+		"_postman_id": "6b59e4f8-7e6d-4e0f-9b75-87b23c027248",
+		"name": "MOONEY",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "USUARIO",
+			"item": [
+				{
+					"name": "Autenticação",
+					"item": [
+						{
+							"name": "JWT TOKEN",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"username\": \"mooney\",\n  \"password\": \"mooney\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://api.mooney.com/v1/token/",
+									"protocol": "http",
+									"host": [
+										"api",
+										"mooney",
+										"com"
+									],
+									"path": [
+										"v1",
+										"token",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "OAUTH2 PASSWORD TOKEN",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "client_id",
+											"value": "2LxBKN35djDbHhgvkMR7npMWWi0gKmtdlFyzVHQw",
+											"type": "text"
+										},
+										{
+											"key": "client_secret",
+											"value": "4FzCjVqfzipitUNMi3hZByGeRUDhDRkwCK9wVbJPN4CME8AxzGnh7KT6Gh6uMOBiCLexZ5EyBeLmPS1IVevpAlJjeionAUqRbZQQN9cG6NjTEtPdnNFDcnPw4znoPfK5",
+											"type": "text"
+										},
+										{
+											"key": "username",
+											"value": "mooney",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "mooney",
+											"type": "text"
+										},
+										{
+											"key": "grant_type",
+											"value": "password",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://api.mooney.com/v1/oauth2/token/",
+									"protocol": "http",
+									"host": [
+										"api",
+										"mooney",
+										"com"
+									],
+									"path": [
+										"v1",
+										"oauth2",
+										"token",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "OAUTH2 CLIENT CREDENTIALS TOKEN",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "client_id",
+											"value": "76rpCwJqi34TCtR5euRlixQWBFfmt0zXYLvmYWDr",
+											"type": "text"
+										},
+										{
+											"key": "client_secret",
+											"value": "z63fKkzs9e3Ux22KlhnGvQNSYz1IIjdGr5OgIW228ZAmmebJckKyJPOzix4PfygE1VYrvf68KrT5BgqPyhPWolytvrcrSzXomXqgHA8u6xhILjwdqVHirPdMqVQESUCT",
+											"type": "text"
+										},
+										{
+											"key": "username",
+											"value": "mooney",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "password",
+											"value": "mooney",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "grant_type",
+											"value": "client_credentials",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://api.mooney.com/v1/oauth2/token/",
+									"protocol": "http",
+									"host": [
+										"api",
+										"mooney",
+										"com"
+									],
+									"path": [
+										"v1",
+										"oauth2",
+										"token",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "JWT ACCESS",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA2OTkwODU5LCJpYXQiOjE3MDY5OTA1NTksImp0aSI6IjQ2NzQ1ZWY3MWI4NTQ0NGZhNGExNmJkMTE5MDAzMTQyIiwidXNlcl9pZCI6MX0.C5rmhZ3i62wdpIGXenplzY30cg_SHEpmZuuXtScsjpw",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://api.mooney.com/v1/customer/",
+									"protocol": "http",
+									"host": [
+										"api",
+										"mooney",
+										"com"
+									],
+									"path": [
+										"v1",
+										"customer",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "OAUTH PASSWORD ACCESS",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "84jnmn02Xj9Omupwv9ayZg9Gc1CvtC",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://api.mooney.com/v1/oauth2-password/",
+									"protocol": "http",
+									"host": [
+										"api",
+										"mooney",
+										"com"
+									],
+									"path": [
+										"v1",
+										"oauth2-password",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "OAUTH CLIENT CREDENTIALS ACCESS",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "lEcyODK8hQtsyapR3ufRHo7wCshNFs",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://api.mooney.com/v1/oauth2-client-credentials/",
+									"protocol": "http",
+									"host": [
+										"api",
+										"mooney",
+										"com"
+									],
+									"path": [
+										"v1",
+										"oauth2-client-credentials",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Autenticação JWT",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"pm.environment.set(\"access_token\", jsonData.access);",
+									"",
+									"//pm.environment.set(\"access\", \"access\");",
+									"//pm.globals.set(\"access\", \"access\");",
+									"//pm.collectionVariables.set(\"variable_key\", \"variable_value\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"mooney\",\n  \"password\": \"mooney\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_url_base_v1}}/token/",
+							"host": [
+								"{{api_url_base_v1}}"
+							],
+							"path": [
+								"token",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Autenticação OAuth2 Password Step 1",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "client_id",
+									"value": "2LxBKN35djDbHhgvkMR7npMWWi0gKmtdlFyzVHQw",
+									"type": "text"
+								},
+								{
+									"key": "client_secret",
+									"value": "4FzCjVqfzipitUNMi3hZByGeRUDhDRkwCK9wVbJPN4CME8AxzGnh7KT6Gh6uMOBiCLexZ5EyBeLmPS1IVevpAlJjeionAUqRbZQQN9cG6NjTEtPdnNFDcnPw4znoPfK5",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "mooney",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "mooney",
+									"type": "text"
+								},
+								{
+									"key": "grant_type",
+									"value": "password",
+									"type": "text"
+								}
+							],
+							"options": {
+								"urlencoded": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_url_base_v1}}/oauth2/token/",
+							"host": [
+								"{{api_url_base_v1}}"
+							],
+							"path": [
+								"oauth2",
+								"token",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Autenticação OAuth2 Client Credentials Step 1",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "client_id",
+									"value": "76rpCwJqi34TCtR5euRlixQWBFfmt0zXYLvmYWDr",
+									"type": "text"
+								},
+								{
+									"key": "client_secret",
+									"value": "z63fKkzs9e3Ux22KlhnGvQNSYz1IIjdGr5OgIW228ZAmmebJckKyJPOzix4PfygE1VYrvf68KrT5BgqPyhPWolytvrcrSzXomXqgHA8u6xhILjwdqVHirPdMqVQESUCT",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "mooney",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "mooney",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "grant_type",
+									"value": "client_credentials",
+									"type": "text"
+								}
+							],
+							"options": {
+								"urlencoded": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_url_base_v1}}/oauth2/token/",
+							"host": [
+								"{{api_url_base_v1}}"
+							],
+							"path": [
+								"oauth2",
+								"token",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LIXO",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "grant_type",
+									"value": "client_credentials",
+									"type": "text"
+								},
+								{
+									"key": "client_id",
+									"value": "2LxBKN35djDbHhgvkMR7npMWWi0gKmtdlFyzVHQw",
+									"type": "text"
+								},
+								{
+									"key": "client_secret",
+									"value": "4FzCjVqfzipitUNMi3hZByGeRUDhDRkwCK9wVbJPN4CME8AxzGnh7KT6Gh6uMOBiCLexZ5EyBeLmPS1IVevpAlJjeionAUqRbZQQN9cG6NjTEtPdnNFDcnPw4znoPfK5",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "mooney",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "mooney",
+									"type": "text",
+									"disabled": true
+								}
+							],
+							"options": {
+								"formdata": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://api.mooney.com/v1/oauth2/token/",
+							"protocol": "http",
+							"host": [
+								"api",
+								"mooney",
+								"com"
+							],
+							"path": [
+								"v1",
+								"oauth2",
+								"token",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Autenticação OAuth2 Step 2",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "NCtmlxHeLM5mF3klFB22euwaPyixOw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://api.mooney.com/v1/oauth2-password/",
+							"protocol": "http",
+							"host": [
+								"api",
+								"mooney",
+								"com"
+							],
+							"path": [
+								"v1",
+								"oauth2-password",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Autenticação OAuth2 Client Credentials Step 2",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "DIWt9rKdsgtNghMl3yX3iS25tnUoQ0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://api.mooney.com/v1/oauth2-client-credentials/",
+							"protocol": "http",
+							"host": [
+								"api",
+								"mooney",
+								"com"
+							],
+							"path": [
+								"v1",
+								"oauth2-client-credentials",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "SALE",
+			"item": [
+				{
+					"name": "Default",
+					"item": [
+						{
+							"name": "SALE CREATE",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"status\": \"creation\",\n  \"user\": 1,\n  \"seller\": 1,\n  \"customer\": 1,\n  \"total_price\": 90.00,\n  \"total_discount\": 10.00,\n  \"total_amount\":0.00,\n  \"net_amount\":0.00,\n  \"total_discount_amount\":0.00,\n  \"items\": [\n    {\n      \"product\": 4,\n      \"quantity\": 2,\n      \"sale_price\": 50.00,\n      \"discount\":10,\n      \"amount\":45.00\n    },\n    {\n      \"product\": 5,\n      \"quantity\": 1,\n      \"sale_price\": 50.00,\n      \"discount\":10,\n      \"amount\":45.00\n    }\n  ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_url_base_v1}}/sale/",
+									"host": [
+										"{{api_url_base_v1}}"
+									],
+									"path": [
+										"sale",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SALE GET",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api_url_base_v1}}/sale/10/",
+									"host": [
+										"{{api_url_base_v1}}"
+									],
+									"path": [
+										"sale",
+										"10",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SALE UPDATE",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": 10,\n    \"customer\": 1,\n    \"user\": 1,\n    \"seller\": 1,\n    \"total_amount\": \"0.00\",\n    \"net_amount\": \"0.00\",\n    \"total_discount_amount\": \"0.00\",\n    \"tax_amount\": null,\n    \"sale_date\": null,\n    \"items\": [\n        {\n            \"id\": 9,\n            \"quantity\": 2,\n            \"sale_price\": \"50.00\",\n            \"sale_transaction\": 10,\n            \"product\": 4\n        },\n        {\n            \"id\": 10,\n            \"quantity\": 1,\n            \"sale_price\": \"50.00\",\n            \"sale_transaction\": 10,\n            \"product\": 5\n        }\n    ],\n    \"payment_methods\": [],\n    \"payment_installments\": [],\n    \"sale_transaction_status\": \"creation\",\n    \"sale_transaction_type\": \"expense\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_url_base_v1}}/sale/10/",
+									"host": [
+										"{{api_url_base_v1}}"
+									],
+									"path": [
+										"sale",
+										"10",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SALE ITEM CREATE",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"sale_transaction_id\": 10,\n    \"quantity\": 5,\n    \"discount\":10,\n    \"sale_price\": \"50.00\",\n    \"sale_transaction\": 10,\n    \"product\": 4\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_url_base_v1}}/sale/item/",
+									"host": [
+										"{{api_url_base_v1}}"
+									],
+									"path": [
+										"sale",
+										"item",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SALE ITEM UPDATE",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"quantity\": 20,\n    \"sale_price\": \"50.00\",\n    \"sale_transaction\": 10,\n    \"product\": 4,\n    \"discount\":0\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_url_base_v1}}/sale/item/11/",
+									"host": [
+										"{{api_url_base_v1}}"
+									],
+									"path": [
+										"sale",
+										"item",
+										"11",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SALE ITEM GET",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api_url_base_v1}}/sale/item/11/",
+									"host": [
+										"{{api_url_base_v1}}"
+									],
+									"path": [
+										"sale",
+										"item",
+										"11",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SALE ITEM DELETE",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{api_url_base_v1}}/sale/item/20/",
+									"host": [
+										"{{api_url_base_v1}}"
+									],
+									"path": [
+										"sale",
+										"item",
+										"20",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "SOLID",
+					"item": [
+						{
+							"name": "SALE CREATE",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"status\": \"creation\",\n  \"user\": 1,\n  \"seller\": 1,\n  \"customer\": 1,\n  \"date_time\": \"2023-10-01T14:00:00Z\",\n  \"total_price\": 150.00,\n  \"items\": [\n    {\n      \"product\": 4,\n      \"quantity\": 2,\n      \"sale_price\": 50.00\n    },\n    {\n      \"product\": 5,\n      \"quantity\": 1,\n      \"sale_price\": 50.00\n    }\n  ],\n  \"payment_method\": [\n      {\n        \"id\": 1,\n        \"payment_type\": \"CSH\",\n        \"description\": \"Pagamento em dinheiro\",\n        \"payment_date\": \"2024-03-09T23:14:03.714259Z\",\n        \"issuing_bank\": \"\",\n        \"number\": \"\",\n        \"validity\": null,\n        \"payer_cpf_cnpj\": \"\",\n        \"pix_key\": \"\",\n        \"e_wallet_provider\": \"\"\n    },\n    {\n        \"id\": 3,\n        \"payment_type\": \"CRC\",\n        \"description\": \"Pagamento com cartão de crédito\",\n        \"payment_date\": \"2024-03-09T23:14:03.716037Z\",\n        \"issuing_bank\": \"\",\n        \"number\": \"\",\n        \"validity\": null,\n        \"payer_cpf_cnpj\": \"\",\n        \"pix_key\": \"\",\n        \"e_wallet_provider\": \"\"\n    }\n  ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_url_base_v1}}/sale/",
+									"host": [
+										"{{api_url_base_v1}}"
+									],
+									"path": [
+										"sale",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SALE GET",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api_url_base_v1}}/sale/1/",
+									"host": [
+										"{{api_url_base_v1}}"
+									],
+									"path": [
+										"sale",
+										"1",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SALE UPDATE",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"status\": \"billing\",\n  \"user\": 1\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_url_base_v1}}/factory/sale/1/",
+									"host": [
+										"{{api_url_base_v1}}"
+									],
+									"path": [
+										"factory",
+										"sale",
+										"1",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Service",
+					"item": [
+						{
+							"name": "SALE CREATE",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"status\": \"creation\",\n  \"user\": 1,\n  \"seller\": 1,\n  \"customer\": 1\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_url_base_v1}}/service/sale/",
+									"host": [
+										"{{api_url_base_v1}}"
+									],
+									"path": [
+										"service",
+										"sale",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SALE GET",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api_url_base_v1}}/service/sale/2/",
+									"host": [
+										"{{api_url_base_v1}}"
+									],
+									"path": [
+										"service",
+										"sale",
+										"2",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SALE UPDATE",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": 14,\n    \"customer\": 1,\n    \"user\": 1,\n    \"seller\": 1,\n    \"total_amount\": \"0.00\",\n    \"net_amount\": \"0.00\",\n    \"total_discount_amount\": \"0.00\",\n    \"tax_amount\": null,\n    \"sale_date\": null,\n    \"sale_transaction_status\": \"billing\",\n    \"sale_transaction_type\": \"expense\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_url_base_v1}}/service/sale/14/",
+									"host": [
+										"{{api_url_base_v1}}"
+									],
+									"path": [
+										"service",
+										"sale",
+										"14",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SALE ITEM CREATE",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"quantity\": 1,\n    \"discount\":0,\n    \"sale_price\": \"100\",\n    \"sale_transaction\": 2,\n    \"product\": 2\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_url_base_v1}}/service/sale/item/",
+									"host": [
+										"{{api_url_base_v1}}"
+									],
+									"path": [
+										"service",
+										"sale",
+										"item",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SALE ITEM UPDATE",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"quantity\": 20,\n    \"sale_price\": \"50.00\",\n    \"sale_transaction\": 10,\n    \"product\": 4,\n    \"discount\":0\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_url_base_v1}}/service/sale/item/11/",
+									"host": [
+										"{{api_url_base_v1}}"
+									],
+									"path": [
+										"service",
+										"sale",
+										"item",
+										"11",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SALE ITEM GET",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api_url_base_v1}}/service/sale/item/27/",
+									"host": [
+										"{{api_url_base_v1}}"
+									],
+									"path": [
+										"service",
+										"sale",
+										"item",
+										"27",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SALE ITEM DELETE",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{api_url_base_v1}}/service/sale/item/28/",
+									"host": [
+										"{{api_url_base_v1}}"
+									],
+									"path": [
+										"service",
+										"sale",
+										"item",
+										"28",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SALE PAYMENT METHOD CREATE",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"sale_transaction\": 2,\n    \"payment_method\": 3,\n    \"total_amount\": \"100\",\n    \"installment\": 1,\n    \"payer_cpf_cnpj\":\"\",\n    \"number\":\"\",\n    \"name_card_holder\":\"\"\n}   ",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_url_base_v1}}/service/sale/payment/",
+									"host": [
+										"{{api_url_base_v1}}"
+									],
+									"path": [
+										"service",
+										"sale",
+										"payment",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SALE PAYMENT METHOD DELETE",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{api_url_base_v1}}/service/sale/payment/1/",
+									"host": [
+										"{{api_url_base_v1}}"
+									],
+									"path": [
+										"service",
+										"sale",
+										"payment",
+										"1",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SALE PAYMENT METHOD UPDATE",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"sale_transaction\": 2,\n    \"payment_method\": 3,\n    \"total_amount\": \"100\",\n    \"installment\": 1,\n    \"payer_cpf_cnpj\":\"\",\n    \"number\":\"\",\n    \"name_card_holder\":\"\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_url_base_v1}}/service/sale/payment/31/",
+									"host": [
+										"{{api_url_base_v1}}"
+									],
+									"path": [
+										"service",
+										"sale",
+										"payment",
+										"31",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "PRODUCT",
+			"item": [
+				{
+					"name": "PRODUCT CREATE",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n  {\n    \"name\": \"Mouse Gamer RGB\",\n    \"description\": \"Mouse gamer com iluminação RGB e 7200 DPI.\",\n    \"price\": \"150\",\n    \"category_id\": 1\n  },\n  {\n    \"name\": \"Teclado Mecânico\",\n    \"description\": \"Teclado mecânico com switches azuis para melhor resposta tátil.\",\n    \"price\": \"300\",\n    \"category_id\": 1\n  },\n  {\n    \"name\": \"Headset 7.1 Surround\",\n    \"description\": \"Headset com som surround 7.1, microfone embutido e cancelamento de ruído.\",\n    \"price\": \"250\",\n    \"category_id\": 1\n  },\n  {\n    \"name\": \"Placa de Vídeo GTX 1660\",\n    \"description\": \"Placa de vídeo Nvidia GTX 1660 com 6GB de memória VRAM.\",\n    \"price\": \"2200\",\n    \"category_id\": 2\n  },\n  {\n    \"name\": \"Processador Ryzen 5 3600\",\n    \"description\": \"Processador AMD Ryzen 5 3600, 6 núcleos e 12 threads, até 4.2 GHz.\",\n    \"price\": \"1200\",\n    \"category_id\": 2\n  },\n  {\n    \"name\": \"SSD NVMe 1TB\",\n    \"description\": \"SSD NVMe com 1TB de capacidade e leituras de até 3500MB/s.\",\n    \"price\": \"900\",\n    \"category_id\": 2\n  },\n  {\n    \"name\": \"Memória RAM 16GB DDR4\",\n    \"description\": \"Kit de memória RAM DDR4, 16GB (2x8GB), 3200MHz.\",\n    \"price\": \"600\",\n    \"category_id\": 2\n  },\n  {\n    \"name\": \"Cabo USB Tipo-C\",\n    \"description\": \"Cabo USB Tipo-C de alta velocidade para carregamento e transferência de dados.\",\n    \"price\": \"50\",\n    \"category_id\": 3\n  },\n  {\n    \"name\": \"Capa Protetora para Notebook\",\n    \"description\": \"Capa protetora em neoprene para notebooks de até 15 polegadas.\",\n    \"price\": \"80\",\n    \"category_id\": 3\n  },\n  {\n    \"name\": \"Suporte para Monitor\",\n    \"description\": \"Suporte ajustável para monitor, com gestão de cabos integrada.\",\n    \"price\": \"150\",\n    \"category_id\": 3\n  }\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://api.mooney.com/v1/product/",
+							"protocol": "http",
+							"host": [
+								"api",
+								"mooney",
+								"com"
+							],
+							"path": [
+								"v1",
+								"product",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CATEGORY CREATE",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Acessórios\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://api.mooney.com/v1/product/category/",
+							"protocol": "http",
+							"host": [
+								"api",
+								"mooney",
+								"com"
+							],
+							"path": [
+								"v1",
+								"product",
+								"category",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PRODUTO CATEGORIA GET",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_url_base_v1}}/product/category/1/",
+							"host": [
+								"{{api_url_base_v1}}"
+							],
+							"path": [
+								"product",
+								"category",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PRODUTO GET",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_url_base_v1}}/product/1/",
+							"host": [
+								"{{api_url_base_v1}}"
+							],
+							"path": [
+								"product",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CUSTOMER",
+			"item": [
+				{
+					"name": "CREATE CUSTOMER",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"Danilo\",\n    \"email\":\"danilotorres@mail.com\",\n    \"phone\":\"16900001111\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://api.mooney.com/v1/customer/",
+							"protocol": "http",
+							"host": [
+								"api",
+								"mooney",
+								"com"
+							],
+							"path": [
+								"v1",
+								"customer",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CUSTOMER GET",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_url_base_v1}}/customer/1/",
+							"host": [
+								"{{api_url_base_v1}}"
+							],
+							"path": [
+								"customer",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PAYMENT",
+			"item": [
+				{
+					"name": "PAYMENT METHOD CREATE",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n  {\n    \"payment_type\": \"CSH\",\n    \"description\": \"Pagamento em dinheiro\"\n  },\n  {\n    \"payment_type\": \"CHK\",\n    \"description\": \"Pagamento com cheque\"\n  },\n  {\n    \"payment_type\": \"CRC\",\n    \"description\": \"Pagamento com cartão de crédito\"\n  },\n  {\n    \"payment_type\": \"DBT\",\n    \"description\": \"Pagamento com cartão de débito\"\n  },\n  {\n    \"payment_type\": \"BKT\",\n    \"description\": \"Transferência bancária\"\n  },\n  {\n    \"payment_type\": \"BLT\",\n    \"description\": \"Pagamento via boleto\"\n  },\n  {\n    \"payment_type\": \"PIX\",\n    \"description\": \"Pagamento via PIX\"\n  },\n  {\n    \"payment_type\": \"EWT\",\n    \"description\": \"Pagamento via carteira digital\"\n  }\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://api.mooney.com/v1/payment/method/",
+							"protocol": "http",
+							"host": [
+								"api",
+								"mooney",
+								"com"
+							],
+							"path": [
+								"v1",
+								"payment",
+								"method",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PAYMENT METHOD GET",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://api.mooney.com/v1/payment/method/5/",
+							"protocol": "http",
+							"host": [
+								"api",
+								"mooney",
+								"com"
+							],
+							"path": [
+								"v1",
+								"payment",
+								"method",
+								"5",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

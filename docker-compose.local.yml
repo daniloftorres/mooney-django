@@ -34,7 +34,7 @@ services:
     volumes:
       - ./mooney/static/:/app/mooney/static/
       - ./config/local/nginx/nginx.conf:/etc/nginx/nginx.conf
-      - ./config/local/nginx/conf.d:/etc/nginx/conf.
+      #- ./config/local/nginx/conf.d:/etc/nginx/conf.
     depends_on:
       - django
 
