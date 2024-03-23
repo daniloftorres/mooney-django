@@ -16,6 +16,9 @@ from apps.erp.transaction.api.v1.views import SaleTransactionAPI, SaleTransactio
 
 from django.conf.urls.static import static
 
+# Importa a view do django-prometheus
+from django_prometheus import exports as django_prometheus_exports
+
 router = routers.DefaultRouter()
 # router.register(r'customer-oauth2', CustomerViewSetOAuth2)
 router.register(r'customer', CustomerViewSet)
@@ -97,6 +100,13 @@ urlpatterns = [
     path('v1/product/category/<int:pk>/', ProductCategoryListCreateAPIView.as_view(),
          name="product_category_list")
 ] + urlpatterns
+
+"""urlpatterns = [
+    # Suas URLs existentes
+    # ...
+    # URL para expor métricas do Prometheus
+    path('metrics/', include('django_prometheus.urls')),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)"""
 
 urlpatterns = [
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + urlpatterns

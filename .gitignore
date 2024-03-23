@@ -11,3 +11,5 @@ draw_tree.sh
 structure.txt
 remove_migrations.sh
 features.md
+**/migrations/*
+!**/migrations/__init__.py
