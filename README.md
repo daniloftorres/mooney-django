@@ -1,6 +1,15 @@
-# Mooney Python API
+# Mooney Python Django API
 
 ## Objetivo
+
+Projeto destinado a estudos e testes, por isso sempre estara em constantes mudanças.
+Consumo de API Rest:
+  Autenticação JWT
+  Autenticação OAuth2
+  Autenticação Usuario Password
+  Gestão de Produto
+  Gestão de Cliente
+  Gestão de Venda
 
 Gerenciar requisições de um fluxo de venda, partindo da criação da venda, adicionando produtos, selecionando cliente e vendedor, e finalizando na área de finanças onde o usuário poderá ver e gerenciar todas as entradas e parcelas realizadas pelas vendas.
 
@@ -713,25 +722,3 @@ curl --location --request GET 'http://api.mooney.com/v1/service/sale/payment/1/'
 curl --location --request DELETE 'http://api.mooney.com/v1/service/sale/payment/1/' \
 --header 'Authorization: Bearer {{access_token}}'
 ```
-
-# Monitoramento
-
-grafana
-user: admin
-pass: admin
-http://localhost:3000/login
-prometheus:
-image: prom/prometheus:v2.26.0
-volumes: - ./prometheus.yml:/etc/prometheus/prometheus.yml
-ports: - "9090:9090"
-
-cadvisor:
-image: google/cadvisor:latest
-volumes: - "/:/rootfs:ro" - "/var/run:/var/run:rw" - "/sys:/sys:ro" - "/var/lib/docker/:/var/lib/docker:ro"
-ports: - "8080:8080"
-labels:
-org.label-schema.group: "monitoring"
-
-grafana:
-image: grafana/grafana:latest
-ports: - "3000:3000"
