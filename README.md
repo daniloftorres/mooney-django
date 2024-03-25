@@ -4,12 +4,12 @@
 
 Projeto destinado a estudos e testes, por isso sempre á em constantes mudanças.
 Consumo de API RESTful:
-  Autenticação JWT
-  Autenticação OAuth2
-  Autenticação Usuario Password
-  Gestão de Produto
-  Gestão de Cliente
-  Gestão de Venda
+Autenticação JWT
+Autenticação OAuth2
+Autenticação Usuario Password
+Gestão de Produto
+Gestão de Cliente
+Gestão de Venda
 
 Gerenciar requisições de um fluxo de venda, partindo da criação da venda, adicionando produtos, selecionando cliente e vendedor, e finalizando na área de finanças onde o usuário poderá ver e gerenciar todas as entradas e parcelas realizadas pelas vendas.
 
@@ -261,7 +261,7 @@ c081f1c3feed   mooney-django_django   "/entrypoint.sh"    About a minute ago   U
 8188aac8c45d   postgres:14.1-alpine    "docker-entrypoint.s…"   About a minute ago   Up About a minute   0.0.0.0:5432->5432/tcp, :::5432->5432/tcp   mooney-django_postgres_1
 ```
 
-São 3 serviços principais rodando:
+São 6 serviços principais rodando:
 
 - Nginx
 
@@ -285,6 +285,7 @@ Adicione no arquivo `/etc/hosts` as configurações abaixo:
 127.0.0.1	django
 127.0.0.1	prometheus
 127.0.0.1	cadvisor
+127.0.0.1	grafana
 ```
 
 ### Migrations iniciais.
@@ -351,6 +352,33 @@ Adicione no arquivo hosts as configurações abaixo:
 
   - Tente acessar a url : http://admin.mooney.com/
     Se o login do admin django for exibido, tudo foi um sucesso ate agora.
+
+# Monitoramento de Sistemas e Observabilidade
+
+## prometheus
+
+    - Para acessar o prometheus : http://prometheus:9090
+    - Por default não precisa de usuario e senha
+    - Cheque se as configurações de raspagem de dados configurada no `prometheus.yml` estão todas ativas corretamente.
+
+    | Service    | Endpoint                      | State | Labels                   | Last Scrape  | Scrape Duration | Error         |
+    |------------|-------------------------------|-------|--------------------------|--------------|----------------|---------------|
+    | cadvisor   | http://cadvisor:8080/metrics  | UP    | instance="cadvisor:8080" job="cadvisor" | 416.000ms ago | 124.998ms       |               |
+    | django     | http://django:8000/metrics    | UP    | instance="django:8000"   job="django"   | 6.869s ago   | 10.606ms        |               |
+    | prometheus | http://localhost:9090/metrics | UP    | instance="localhost:9090" job="prometheus"| 8.266s ago   | 7.964ms         |               |
+
+    - Todas tem que ter o State como UP
+
+## cadvisor
+
+    - Para acessar o cadvisor : http://cadvisor:8080
+    - Por default não precisa de usuario e senha
+    - Deve exibir um dash com metricas em realtime da estrutura dos servidores do docker.
+
+## grafana
+
+    - Para acessar o cadvisor : http://grafana:3000
+    - Acesse com user : admin e password : admin
 
 # API
 
@@ -529,7 +557,7 @@ curl --location --request POST 'http://api.mooney.com/v1/product/' \
 ]'
 ```
 
-### Obter Produto - Não validado, precisa ser criado
+### Obter Produto
 
 ```bash
 curl --location --request GET 'http://api.mooney.com/v1/product/1/' \
