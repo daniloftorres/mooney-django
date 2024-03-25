@@ -41,205 +41,183 @@ Gerenciar requisições de um fluxo de venda, partindo da criação da venda, ad
 
 ```
 ├── mooney-django/
-│   ├── apps/
-│   │   ├── account/
-│   │   │   └── admin.py
-│   │   │   ├── api/
-│   │   │   │   └── __init__.py
-│   │   │   │   ├── v1/
-│   │   │   │   │   └── __init__.py
-│   │   │   │   │   └── serializers.py
-│   │   │   │   │   └── views.py
-│   │   │   └── apps.py
-│   │   │   └── __init__.py
-│   │   │   ├── migrations/
-│   │   │   │   └── 0001_initial.py
-│   │   │   │   └── __init__.py
-│   │   │   └── models.py
-│   │   │   └── tests.py
-│   │   │   └── TimezoneMiddleware.py
-│   │   │   └── UserLanguageMiddleware.py
-│   │   │   └── views.py
-│   │   ├── core/
-│   │   │   ├── api/
-│   │   │   │   ├── v1/
-│   │   │   │   │   └── admin.py
-│   │   │   │   │   └── apps.py
-│   │   │   │   │   └── __init__.py
-│   │   │   │   │   ├── migrations/
-│   │   │   │   │   │   └── __init__.py
-│   │   │   │   │   └── tests.py
-│   │   │   │   │   └── views.py
-│   │   │   └── apps.py
-│   │   │   └── __init__.py
-│   │   │   ├── migrations/
-│   │   │   │   └── __init__.py
-│   │   │   └── models.py
-│   │   ├── customer/
-│   │   │   └── admin.py
-│   │   │   ├── api/
-│   │   │   │   └── __init__.py
-│   │   │   │   ├── v1/
-│   │   │   │   │   └── admin.py
-│   │   │   │   │   └── __init__.py
-│   │   │   │   │   └── serializers.py
-│   │   │   │   │   └── tests copy.py
-│   │   │   │   │   └── tests.py
-│   │   │   │   │   └── views_oauth2_client_credentials.py
-│   │   │   │   │   └── views_oauth2_password.py
-│   │   │   │   │   └── views_oauth2.py
-│   │   │   │   │   └── views.py
-│   │   │   └── apps.py
-│   │   │   └── __init__.py
-│   │   │   ├── migrations/
-│   │   │   │   └── 0001_initial.py
-│   │   │   │   └── __init__.py
-│   │   │   └── models.py
-│   │   │   └── tests.py
-│   │   ├── erp/
-│   │   │   ├── payment/
-│   │   │   │   └── admin.py
-│   │   │   │   ├── api/
-│   │   │   │   │   ├── v1/
-│   │   │   │   │   │   └── serializers.py
-│   │   │   │   │   │   └── views.py
-│   │   │   │   └── apps.py
-│   │   │   │   └── __init__.py
-│   │   │   │   ├── migrations/
-│   │   │   │   │   └── 0001_initial.py
-│   │   │   │   │   └── __init__.py
-│   │   │   │   └── models.py
-│   │   │   │   └── tests.py
-│   │   │   │   └── views.py
-│   │   │   ├── transaction/
-│   │   │   │   └── admin.py
-│   │   │   │   ├── api/
-│   │   │   │   │   └── __init__.py
-│   │   │   │   │   ├── v1/
-│   │   │   │   │   │   └── __init__.py
-│   │   │   │   │   │   └── serializers.py
-│   │   │   │   │   │   ├── services/
-│   │   │   │   │   │   │   └── services.py
-│   │   │   │   │   │   │   └── views.py
-│   │   │   │   │   │   └── tests.py
-│   │   │   │   │   │   └── views.py
-│   │   │   │   └── apps.py
-│   │   │   │   └── __init__.py
-│   │   │   │   ├── migrations/
-│   │   │   │   │   └── 0001_initial.py
-│   │   │   │   │   └── 0002_auto_20240311_1802.py
-│   │   │   │   │   └── 0003_alter_saletransaction_sale_date.py
-│   │   │   │   │   └── 0004_alter_paymentinstallmentsaletransaction_status.py
-│   │   │   │   │   └── 0005_alter_paymentinstallmentsaletransaction_installment.py
-│   │   │   │   │   └── 0006_auto_20240312_0044.py
-│   │   │   │   │   └── 0007_saletransaction_total_quantity.py
-│   │   │   │   │   └── __init__.py
-│   │   │   │   └── models.py
-│   │   │   │   └── signals.py
-│   │   │   │   └── tests.py
-│   │   │   │   └── views.py
-│   │   ├── product/
-│   │   │   └── admin.py
-│   │   │   ├── api/
-│   │   │   │   └── __init__.py
-│   │   │   │   ├── v1/
-│   │   │   │   │   └── admin.py
-│   │   │   │   │   └── __init__.py
-│   │   │   │   │   └── serializers.py
-│   │   │   │   │   └── tests copy.py
-│   │   │   │   │   └── tests.py
-│   │   │   │   │   └── views_oauth2_client_credentials.py
-│   │   │   │   │   └── views_oauth2_password.py
-│   │   │   │   │   └── views_oauth2.py
-│   │   │   │   │   └── views.py
-│   │   │   └── apps.py
-│   │   │   └── __init__.py
-│   │   │   ├── migrations/
-│   │   │   │   └── 0001_initial.py
-│   │   │   │   └── __init__.py
-│   │   │   └── models.py
-│   │   │   └── tests.py
-│   │   │   └── views.py
-│   │   ├── sale/
-│   │   │   └── admin.py
-│   │   │   ├── api/
-│   │   │   │   └── __init__.py
-│   │   │   │   ├── v1/
-│   │   │   │   │   ├── factory/
-│   │   │   │   │   │   └── factory.py
-│   │   │   │   │   │   └── views.py
-│   │   │   │   │   └── __init__.py
-│   │   │   │   │   └── serializers.py
-│   │   │   │   │   ├── strategies/
-│   │   │   │   │   │   └── desconto.py
-│   │   │   │   │   │   └── pagamento.py
-│   │   │   │   │   │   └── views.py
-│   │   │   │   │   └── tests.py
-│   │   │   │   │   └── views.py
-│   │   │   └── apps.py
-│   │   │   └── __init__.py
-│   │   │   ├── migrations/
-│   │   │   │   └── __init__.py
-│   │   │   └── models.py
-│   │   │   └── tests.py
-│   └── clear_database.py
-│   ├── config/
-│   │   ├── local/
-│   │   │   └── Dockerfile
-│   │   │   └── entrypoint.sh
-│   │   │   ├── nginx/
-│   │   │   │   ├── conf.d/
-│   │   │   │   │   └── mooney.conf
-│   │   │   │   └── nginx_antigo.conf
-│   │   │   │   └── nginx.conf
-│   │   │   ├── postgres/
-│   │   │   │   └── my-pg_hba.conf
-│   │   │   │   └── my-postgresql.conf
-│   │   │   │   └── postgresql.conf
-│   │   │   ├── postgresql/
-│   │   │   │   ├── my-pg_hba.conf/
-│   │   │   │   │   └── *
-│   │   │   │   ├── my-postgresql.conf/
-│   │   │   │   │   └── *
-│   │   │   └── requirements.txt
-│   │   ├── postgres/
-│   │   │   ├── postgresql.conf/
-│   │   │   │   └── *
-│   │   ├── production/
-│   │   │   └── *
-│   │   ├── staging/
-│   │   │   └── *
-│   └── docker-compose.local.yml
-│   └── docker-compose.production.yml
-│   └── draw_tree.sh
-│   └── manage.py
-│   ├── mooney/
-│   │   └── asgi.py
-│   │   └── base.py
-│   │   └── __init__.py
-│   │   └── local.py
-│   │   ├── media/
-│   │   │   └── *
-│   │   └── production.py
-│   │   ├── routes/
-│   │   │   └── admin.py
-│   │   │   ├── api/
-│   │   │   │   ├── v1/
-│   │   │   │   │   └── account.py
-│   │   │   │   │   └── urls.py
-│   │   │   └── hosts.py
-│   │   │   └── urls_api.py
-│   │   │   ├── urls_old/
-│   │   │   │   └── admin.py
-│   │   │   │   └── api.py
-│   │   │   └── urls.py
-│   │   └── settings.py
-│   │   └── urls.py
-│   │   └── wsgi.py
-│   └── README.md
-│   └── remove_migrations.sh
-│   └── structure.txt
-
+│  ├── apps/
+│  │  ├── account/
+│  │  │  └── admin.py
+│  │  │  ├── api/
+│  │  │  │  └── __init__.py
+│  │  │  │  ├── v1/
+│  │  │  │  │  └── __init__.py
+│  │  │  │  │  └── serializers.py
+│  │  │  │  │  └── views.py
+│  │  │  └── apps.py
+│  │  │  └── __init__.py
+│  │  │  └── models.py
+│  │  │  └── tests.py
+│  │  │  └── TimezoneMiddleware.py
+│  │  │  └── UserLanguageMiddleware.py
+│  │  │  └── views.py
+│  │  ├── core/
+│  │  │  ├── api/
+│  │  │  │  ├── v1/
+│  │  │  │  │  └── admin.py
+│  │  │  │  │  └── apps.py
+│  │  │  │  │  └── __init__.py
+│  │  │  │  │  └── tests.py
+│  │  │  │  │  └── views.py
+│  │  │  └── apps.py
+│  │  │  └── __init__.py
+│  │  │  └── models.py
+│  │  ├── customer/
+│  │  │  └── admin.py
+│  │  │  ├── api/
+│  │  │  │  └── __init__.py
+│  │  │  │  ├── v1/
+│  │  │  │  │  └── admin.py
+│  │  │  │  │  └── __init__.py
+│  │  │  │  │  └── serializers.py
+│  │  │  │  │  └── tests copy.py
+│  │  │  │  │  └── tests.py
+│  │  │  │  │  └── views_oauth2_client_credentials.py
+│  │  │  │  │  └── views_oauth2_password.py
+│  │  │  │  │  └── views_oauth2.py
+│  │  │  │  │  └── views.py
+│  │  │  └── apps.py
+│  │  │  └── __init__.py
+│  │  │  └── models.py
+│  │  │  └── tests.py
+│  │  ├── erp/
+│  │  │  └── __init__.py
+│  │  │  ├── payment/
+│  │  │  │  └── admin.py
+│  │  │  │  ├── api/
+│  │  │  │  │  ├── v1/
+│  │  │  │  │  │  └── serializers.py
+│  │  │  │  │  │  └── views.py
+│  │  │  │  └── apps.py
+│  │  │  │  └── __init__.py
+│  │  │  │  └── models.py
+│  │  │  │  └── tests.py
+│  │  │  │  └── views.py
+│  │  │  ├── transaction/
+│  │  │  │  └── admin.py
+│  │  │  │  ├── api/
+│  │  │  │  │  └── __init__.py
+│  │  │  │  │  ├── v1/
+│  │  │  │  │  │  └── bk-tes.py
+│  │  │  │  │  │  └── __init__.py
+│  │  │  │  │  │  └── serializers.py
+│  │  │  │  │  │  ├── services/
+│  │  │  │  │  │  │  └── services.py
+│  │  │  │  │  │  │  └── views.py
+│  │  │  │  │  │  └── tests-cp.py
+│  │  │  │  │  │  └── tests.py
+│  │  │  │  │  │  └── views.py
+│  │  │  │  └── apps.py
+│  │  │  │  └── bk_tes.py
+│  │  │  │  └── __init__.py
+│  │  │  │  └── models.py
+│  │  │  │  └── signals.py
+│  │  │  │  └── tests.py
+│  │  │  │  └── views.py
+│  │  └── __init__.py
+│  │  ├── product/
+│  │  │  └── admin.py
+│  │  │  ├── api/
+│  │  │  │  └── __init__.py
+│  │  │  │  ├── v1/
+│  │  │  │  │  └── admin.py
+│  │  │  │  │  └── __init__.py
+│  │  │  │  │  └── serializers.py
+│  │  │  │  │  └── tests copy.py
+│  │  │  │  │  └── tests.py
+│  │  │  │  │  └── views_oauth2_client_credentials.py
+│  │  │  │  │  └── views_oauth2_password.py
+│  │  │  │  │  └── views_oauth2.py
+│  │  │  │  │  └── views.py
+│  │  │  └── apps.py
+│  │  │  └── __init__.py
+│  │  │  └── models.py
+│  │  │  └── tests.py
+│  │  │  └── views.py
+│  │  ├── sale/
+│  │  │  └── admin.py
+│  │  │  ├── api/
+│  │  │  │  └── __init__.py
+│  │  │  │  ├── v1/
+│  │  │  │  │  ├── factory/
+│  │  │  │  │  │  └── factory.py
+│  │  │  │  │  │  └── views.py
+│  │  │  │  │  └── __init__.py
+│  │  │  │  │  └── serializers.py
+│  │  │  │  │  ├── strategies/
+│  │  │  │  │  │  └── desconto.py
+│  │  │  │  │  │  └── pagamento.py
+│  │  │  │  │  │  └── views.py
+│  │  │  │  │  └── tests.py
+│  │  │  │  │  └── views.py
+│  │  │  └── apps.py
+│  │  │  └── __init__.py
+│  │  │  └── models.py
+│  │  │  └── tests.py
+│  ├── config/
+│  │  ├── local/
+│  │  │  └── Dockerfile
+│  │  │  └── entrypoint.sh
+│  │  │  ├── nginx/
+│  │  │  │  ├── conf.d/
+│  │  │  │  │  └── mooney.conf
+│  │  │  │  └── nginx_antigo.conf
+│  │  │  │  └── nginx.conf
+│  │  │  ├── postgres/
+│  │  │  │  └── my-pg_hba.conf
+│  │  │  │  └── my-postgresql.conf
+│  │  │  │  └── postgresql.conf
+│  │  │  ├── postgresql/
+│  │  │  │  ├── my-pg_hba.conf/
+│  │  │  │  │  └── *
+│  │  │  │  ├── my-postgresql.conf/
+│  │  │  │  │  └── *
+│  │  │  └── requirements.txt
+│  │  ├── postgres/
+│  │  │  ├── postgresql.conf/
+│  │  │  │  └── *
+│  │  ├── production/
+│  │  │  └── *
+│  │  ├── staging/
+│  │  │  └── *
+│  └── docker-compose.local.yml
+│  └── docker-compose.production.yml
+│  ├── k8s_blocked/
+│  │  └── deployment.yaml
+│  └── manage.py
+│  ├── mooney/
+│  │  └── asgi.py
+│  │  └── base.py
+│  │  └── __init__.py
+│  │  └── local.py
+│  │  ├── media/
+│  │  │  └── *
+│  │  └── production.py
+│  │  ├── routes/
+│  │  │  └── admin.py
+│  │  │  ├── api/
+│  │  │  │  ├── v1/
+│  │  │  │  │  └── account.py
+│  │  │  │  │  └── urls.py
+│  │  │  └── hosts.py
+│  │  │  └── metrics.py
+│  │  │  └── root.py
+│  │  │  └── urls_api.py
+│  │  │  ├── urls_old/
+│  │  │  │  └── admin.py
+│  │  │  │  └── api.py
+│  │  │  └── urls.py
+│  │  └── settings.py
+│  │  └── urls.py
+│  │  └── wsgi.py
+│  └── prometheus.yml
+│  └── README.md
 ```
 
 ## Passos para Executar o Projeto Localmente
@@ -289,15 +267,14 @@ São 3 serviços principais rodando:
 
 ### Configuração de Hosts no Ubuntu
 
-Adicione no arquivo hosts as configurações abaixo:
+Adicione no arquivo `/etc/hosts` as configurações abaixo:
 
 ```bash
--abra o arquivo de hosts
-sudo nano /etc/hosts
-
--adicione a configuração abaixo
-127.0.0.1  admin.mooney.com
-127.0.0.1  api.mooney.com
+127.0.0.1 admin.mooney.com
+127.0.0.1	api.mooney.com
+127.0.0.1	django
+127.0.0.1	prometheus
+127.0.0.1	cadvisor
 ```
 
 ### Migrations iniciais.
@@ -367,11 +344,11 @@ Adicione no arquivo hosts as configurações abaixo:
 
 # API
 
-Este documento fornece instruções sobre como acessar e interagir com a Mooney API, utilizando o framework Django. Abaixo estão listados os endpoints disponíveis e exemplos de como fazer requisições para cada um deles.
+Este documento fornece instruções sobre como acessar e interagir com a API Mooney, utilizando o framework Django. Abaixo estão listados os endpoints disponíveis e exemplos de requisições para cada um deles.
 
 ## Autenticação JWT
 
-Para acessar a maioria dos endpoints, é necessário obter um token JWT e incluí-lo no cabeçalho das suas requisições.
+Para acessar a maioria dos endpoints, é necessário obter um token JWT e incluí-lo no cabeçalho das requisições.
 
 ### Obter Token JWT
 
@@ -421,7 +398,7 @@ curl --location --request POST 'http://api.mooney.com/v1/oauth2/token/' \
 
 ## Postman
 
-Algumas configuração para quem usa Postman como programa para testar as API, mas o conceito serve para quase todos no mesmo genero:
+Algumas configurações para quem usa o Postman para testar as APIs. O conceito serve para outros programas similares.
 
 - [Configuração básica para uso do Postman](https://github.com/daniloftorres/tutorials/blob/master/postman/var-enviroment.md)
 
@@ -451,7 +428,7 @@ curl --location --request GET 'http://api.mooney.com/v1/customer/1/' \
 --header 'Authorization: Bearer {{access_token}}'
 ```
 
-## Product
+## Producto
 
 ### Criar Categoria de Produto
 
@@ -549,7 +526,7 @@ curl --location --request GET 'http://api.mooney.com/v1/product/1/' \
 --header 'Authorization: Bearer {{access_token}}'
 ```
 
-## Payment Method
+## Método de Pagamento
 
 ### Criar Método de Pagamento
 
@@ -600,9 +577,9 @@ curl --location --request GET 'http://api.mooney.com/v1/payment/method/1/' \
 --header 'Authorization: Bearer {{access_token}}'
 ```
 
-## Sale Transaction
+## Transação de Venda
 
-### Criar Sale Transaction
+### Criar Transação de Venda
 
 ```bash
 curl --location --request POST 'http://api.mooney.com/v1/service/sale/' \
@@ -616,14 +593,14 @@ curl --location --request POST 'http://api.mooney.com/v1/service/sale/' \
 }'
 ```
 
-### Obter Sale Transaction
+### Obter Transação de Venda
 
 ```bash
 curl --location --request GET 'http://api.mooney.com/v1/sale/10/' \
 --header 'Authorization: Bearer {{access_token}}'
 ```
 
-### Update Sale Transaction
+### Update Transação de Venda
 
 ```bash
 curl --location --request PUT 'http://api.mooney.com/v1/service/sale/1/' \
@@ -639,9 +616,9 @@ curl --location --request PUT 'http://api.mooney.com/v1/service/sale/1/' \
 }'
 ```
 
-## Sale Transaction Item
+## Transação de Venda Item
 
-### Criar Sale Transaction Item
+### Criar Transação de Venda Item
 
 ```bash
 curl --location --request POST 'http://api.mooney.com/v1/service/sale/item/' \
@@ -656,7 +633,7 @@ curl --location --request POST 'http://api.mooney.com/v1/service/sale/item/' \
 }'
 ```
 
-### Atualizar Sale Transaction Item
+### Atualizar Transação de Venda Item
 
 ```bash
 curl --location --request PUT 'http://api.mooney.com/v1/service/sale/item/1/' \
@@ -671,23 +648,23 @@ curl --location --request PUT 'http://api.mooney.com/v1/service/sale/item/1/' \
 }'
 ```
 
-### Obter Sale Transaction Item
+### Obter Transação de Venda Item
 
 ```bash
 curl --location --request GET 'http://api.mooney.com/v1/sale/item/1/' \
 --header 'Authorization: Bearer {{access_token}}'
 ```
 
-### Remover Sale Transaction Item
+### Remover Transação de Venda Item
 
 ```bash
 curl --location --request DELETE 'http://api.mooney.com/v1/service/sale/item/1/' \
 --header 'Authorization: Bearer {{access_token}}
 ```
 
-## Sale Payment Method
+## Método de Pagamento para a Transação de Venda
 
-### Criar Sale Payment Method
+### Criar Método de Pagamento para a Transação de Venda
 
 ```bash
 curl --location --request POST 'http://api.mooney.com/v1/service/sale/payment/' \
@@ -704,7 +681,7 @@ curl --location --request POST 'http://api.mooney.com/v1/service/sale/payment/' 
 }'
 ```
 
-### Atualizar Sale Payment Method
+### Atualizar Método de Pagamento para a Transação de Venda
 
 ```bash
 curl --location --request PUT 'http://api.mooney.com/v1/service/sale/payment/1/' \
@@ -719,14 +696,14 @@ curl --location --request PUT 'http://api.mooney.com/v1/service/sale/payment/1/'
 }'
 ```
 
-### Obter Sale Payment Method
+### Obter Método de Pagamento para a Transação de Venda
 
 ```bash
 curl --location --request GET 'http://api.mooney.com/v1/service/sale/payment/1/' \
 --header 'Authorization: Bearer {{access_token}}'
 ```
 
-### Remover Sale Payment Method
+### Remover Método de Pagamento para a Transação de Venda
 
 ```bash
 curl --location --request DELETE 'http://api.mooney.com/v1/service/sale/payment/1/' \
