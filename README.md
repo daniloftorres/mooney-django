@@ -253,12 +253,13 @@ docker-compose -f docker-compose.local.yml up
 Devera ver algo parecido com isso
 
 ```bash
-CONTAINER ID   IMAGE    COMMAND   CREATED    STATUS    PORTS    NAMES
-a1f621dbd89b   nginx:latest  "/docker-entrypoint.…"   About a minute ago   Up About a minute   0.0.0.0:80->80/tcp, :::80->80/tcp mooney-django_nginx_1
-
-c081f1c3feed   mooney-django_django   "/entrypoint.sh"    About a minute ago   Up About a minute   0.0.0.0:8000->8000/tcp, :::8000->8000/tcp   mooney-django_django_1
-
-8188aac8c45d   postgres:14.1-alpine    "docker-entrypoint.s…"   About a minute ago   Up About a minute   0.0.0.0:5432->5432/tcp, :::5432->5432/tcp   mooney-django_postgres_1
+CONTAINER ID   IMAGE                     COMMAND                  CREATED       STATUS       PORTS                                       NAMES
+a2b4ebb3314e   nginx:latest              "/docker-entrypoint.…"   5 hours ago   Up 5 hours   0.0.0.0:80->80/tcp, :::80->80/tcp           mooney-django_nginx_1
+aebd589d1ee1   mooney-django_django      "/entrypoint.sh"         5 hours ago   Up 5 hours   0.0.0.0:8000->8000/tcp, :::8000->8000/tcp   mooney-django_django_1
+9b9cf0afaa42   grafana/grafana:latest    "/run.sh"                2 days ago    Up 5 hours   0.0.0.0:3000->3000/tcp, :::3000->3000/tcp   mooney-django_grafana_1
+a2ba5b004fbf   postgres:14.1-alpine      "docker-entrypoint.s…"   3 days ago    Up 5 hours   0.0.0.0:5432->5432/tcp, :::5432->5432/tcp   mooney-django_postgres_1
+2890c472db07   google/cadvisor:latest    "/usr/bin/cadvisor -…"   3 days ago    Up 5 hours   0.0.0.0:8080->8080/tcp, :::8080->8080/tcp   mooney-django_cadvisor_1
+b434026e9b29   prom/prometheus:v2.26.0   "/bin/prometheus --c…"   3 days ago    Up 5 hours   0.0.0.0:9090->9090/tcp, :::9090->9090/tcp   mooney-django_prometheus_1
 ```
 
 São 6 serviços principais rodando:
