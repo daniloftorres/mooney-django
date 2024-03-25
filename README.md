@@ -354,9 +354,9 @@ Adicione no arquivo hosts as configurações abaixo:
   - Tente acessar a url : http://admin.mooney.com/
     Se o login do admin django for exibido, tudo foi um sucesso ate agora.
 
-# Monitoramento de Sistemas e Observabilidade
+# Monitoramento do Sistema e Observabilidade
 
-## prometheus
+## Prometheus
 
     - Para acessar o prometheus : http://prometheus:9090
     - Por default não precisa de usuario e senha
@@ -370,13 +370,13 @@ Adicione no arquivo hosts as configurações abaixo:
 
     - Todas tem que ter o State como UP
 
-## cadvisor
+## CAdvisor
 
     - Para acessar o cadvisor : http://cadvisor:8080
     - Por default não precisa de usuario e senha
     - Deve exibir um dash com metricas em realtime da estrutura dos servidores do docker.
 
-## grafana
+## Grafana
 
     - Para acessar o cadvisor : http://grafana:3000
     - Acesse com user : admin e password : admin
