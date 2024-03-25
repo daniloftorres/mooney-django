@@ -19,6 +19,13 @@ Gerenciar requisições de um fluxo de venda, partindo da criação da venda, ad
 - Django
 - Docker
 - API REST
+- Nginx
+- PostgreSQL
+- Git Actions
+- OAuth2
+- Prometheus
+- CAdvisor
+- Grafana
 
 ## Conceitos Trabalhados
 
@@ -26,6 +33,9 @@ Gerenciar requisições de um fluxo de venda, partindo da criação da venda, ad
 - Design de Serviço
 - MTV
 - API REST
+- Deploy Continuo
+- Testes Automatizados
+- 
 
 ## Estrutura de Arquivos e Pastas
 
@@ -413,7 +423,7 @@ curl --location --request POST 'http://api.mooney.com/v1/oauth2/token/' \
 
 Algumas configuração para quem usa Postman como programa para testar as API, mas o conceito serve para quase todos no mesmo genero:
 
-- [Configuração básica para uso do Postman](documentation/postman/var-enviroment.md)
+- [Configuração básica para uso do Postman](https://github.com/daniloftorres/tutorials/blob/master/postman/var-enviroment.md)
 
 1. Criar Variaveis de Ambiente.
 2. Configurar script para quando o request de obtenção do token tiver retorno, capturar o token para savar em nossa variavel de ambiente.
