@@ -23,6 +23,8 @@
     1.  Configuração
         1. Desabilitar a exposição da versão do Nginx
         2. Use cabeçalhos de segurança : (por exemplo, Strict-Transport-Security, X-Frame-Options, etc.)
+        "analisar o que é isso: more_clear_headers  'Server' 'X-Powered-By' 'X-Runtime';"
+        https://gist.github.com/dmxhZGp1c2hh/1f04f10fca5dd8823377
 
     2. HTTPS
         1. Configure o Nginx para usar HTTPS com certificados válidos

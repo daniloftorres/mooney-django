@@ -3,10 +3,7 @@
 ### Python
 
 - Linguagem de programação versátil, de alto nível, amplamente utilizada em diversas áreas.
-    - Desenvolvimento web (Django, Flask)
-    - Ciência de dados (NumPy, Pandas)
-    - Machine learning (scikit-learn, TensorFlow)
-    - Automação (Selenium, Robot Framework)
+    - Desenvolvimento web (Django)
 
 ### Django
 

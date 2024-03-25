@@ -3,7 +3,7 @@
 ## Objetivo
 
 Projeto destinado a estudos e testes, por isso sempre á em constantes mudanças.
-Consumo de API Rest:
+Consumo de API RESTful:
   Autenticação JWT
   Autenticação OAuth2
   Autenticação Usuario Password
@@ -18,7 +18,7 @@ Gerenciar requisições de um fluxo de venda, partindo da criação da venda, ad
 - Python
 - Django
 - Docker
-- API REST
+- API RESTful
 - Nginx
 - PostgreSQL
 - Git Actions
@@ -32,9 +32,14 @@ Gerenciar requisições de um fluxo de venda, partindo da criação da venda, ad
 - Alguns conceitos de SOLID
 - Design de Serviço
 - MTV
-- API REST
+- API RESTful
 - Deploy Continuo
 - Testes Automatizados
+- Timezone
+- Language
+- Autenticação Token
+- Autenticação OAuth2
+- Subdominio
 
 ## Estrutura de Arquivos e Pastas
 

@@ -1,23 +1,24 @@
 from django.conf import settings
 from django.urls import path, include
 from rest_framework import routers
-from apps.customer.api.v1.views import CustomerViewSet
-from apps.sale.api.v1.factory.views import SaleEntryView
-from apps.customer.api.v1.views_oauth2_client_credentials import OAuth2ClientCredentials
-from apps.customer.api.v1.views_oauth2_password import OAuth2Password
-from apps.product.api.v1.views import ProductCategoryListCreateAPIView, ProductListCreateAPIView
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
 )
+from django.conf.urls.static import static
+from apps.sale.api.v1.factory.views import SaleEntryView
+from apps.customer.api.v1.views import CustomerViewSet
+from apps.customer.api.v1.views_oauth2_client_credentials import OAuth2ClientCredentials
+from apps.customer.api.v1.views_oauth2_password import OAuth2Password
+from apps.product.api.v1.views import ProductCategoryListCreateAPIView, ProductListCreateAPIView
 from apps.erp.payment.api.v1.views import PaymentMethodListCreateAPIView
-from apps.erp.transaction.api.v1.services.views import SaleTransactionServiceAPI, SaleTransactionItemServiceAPI, SaleTransactionPaymentMethodServiceAPI
+from apps.erp.transaction.api.v1.services.views import (
+    SaleTransactionServiceAPI,
+    SaleTransactionItemServiceAPI,
+    SaleTransactionPaymentMethodServiceAPI
+    )
 from apps.erp.transaction.api.v1.views import SaleTransactionAPI, SaleTransactionItemAPI
 
-from django.conf.urls.static import static
-
-# Importa a view do django-prometheus
-from django_prometheus import exports as django_prometheus_exports
 
 router = routers.DefaultRouter()
 # router.register(r'customer-oauth2', CustomerViewSetOAuth2)

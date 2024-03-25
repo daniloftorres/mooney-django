@@ -9,42 +9,31 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
-
-from pathlib import Path
 import os
-# from decouple import Config, RepositoryEnv
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-# Caminho para o arquivo .env
-# env_path = 'mooney/.env'
-
-# Carrega as variáveis de ambiente do arquivo .env
-# config = Config(RepositoryEnv(env_path))
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = 'django-insecure-*gq8)xj3ufyb#myla^9isdr4p44oe5pgb7t)%7i(i&&3@42q(e'
-
 SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = False
 ENVIRONMENT = os.getenv('ENV')
-if ENVIRONMENT == "LOCAL" : 
+if ENVIRONMENT == "LOCAL":
     DEBUG = True
-elif ENVIRONMENT == "PRODUCTION" :
+elif ENVIRONMENT == "PRODUCTION":
+    SECURE_SSL_REDIRECT = True
+    SECURE_HSTS_SECONDS = 31536000
+    X_FRAME_OPTIONS = 'DENY'
+    CSRF_COOKIE_SECURE = True
+    SESSION_COOKIE_SECURE = True
+else :
     SECURE_SSL_REDIRECT = True
     SECURE_HSTS_SECONDS = 31536000
     X_FRAME_OPTIONS = 'DENY'
     CSRF_COOKIE_SECURE = True
     SESSION_COOKIE_SECURE = True
     
-if ENVIRONMENT == "LOCAL" :
+if ENVIRONMENT == "LOCAL":
     ALLOWED_HOSTS = []
 
-if ENVIRONMENT == "LOCAL" :
+if ENVIRONMENT == "LOCAL":
     ALLOWED_HOSTS = []
 
 SECURE_SSL_REDIRECT = True
@@ -180,8 +169,6 @@ OAUTH2_PROVIDER = {
 
     # Define se o escopo do token de acesso deve ser exibido durante a autorização.
     'REQUEST_APPROVAL_PROMPT': 'force',
-
-    # Outras configurações...
 }
 
 
