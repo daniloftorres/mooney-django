@@ -28,16 +28,26 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECRET_KEY = 'django-insecure-*gq8)xj3ufyb#myla^9isdr4p44oe5pgb7t)%7i(i&&3@42q(e'
-# print("GET DADOS DB ENV SECRET_KEY:: ", os.getenv('SECRET_KEY'))
-SECRET_KEY = os.getenv('SECRET_KEY')
-print("######")
-print("## SECRET_KEY :: ", SECRET_KEY)
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
 
-ALLOWED_HOSTS = []
-# ROOT_HOSTCONF = 'mooney.mooney.routes.hosts'
-DEFAULT_HOST = 'admin-django'
+SECRET_KEY = os.getenv('SECRET_KEY')
+DEBUG = False
+ENVIRONMENT = os.getenv('ENV')
+if ENVIRONMENT == "LOCAL" : 
+    DEBUG = True
+elif ENVIRONMENT == "PRODUCTION" :
+    SECURE_SSL_REDIRECT = True
+    SECURE_HSTS_SECONDS = 31536000
+    X_FRAME_OPTIONS = 'DENY'
+    CSRF_COOKIE_SECURE = True
+    SESSION_COOKIE_SECURE = True
+    
+if ENVIRONMENT == "LOCAL" :
+    ALLOWED_HOSTS = []
+
+if ENVIRONMENT == "LOCAL" :
+    ALLOWED_HOSTS = []
+
+SECURE_SSL_REDIRECT = True
 
 
 # Application definition
@@ -132,14 +142,11 @@ USE_I18N = True
 # Use datas e números localizados
 USE_L10N = True
 
-# teste
-# ROOT_URLCONF = 'mooney.routes.urls'
+# HOSTS
+DEFAULT_HOST = 'admin-django'
 ROOT_URLCONF = 'mooney.routes.urls_api'
 ROOT_URLADMIN = 'mooney.routes.admin'
 ROOT_HOSTCONF = 'mooney.routes.hosts'
-# ROOT_HOSTDOC = 'mooney.routes.doc'
-# DEFAULT_HOST = 'www'
-# ROOT_HOSTCONF = 'meuprojeto.hosts'
 
 AUTH_USER_MODEL = 'account.CustomUser'
 OAUTH2_PROVIDER = {

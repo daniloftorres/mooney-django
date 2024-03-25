@@ -1,6 +1,7 @@
 version: '3'
 
 services:
+
   django:
     build:
       context: .
@@ -25,7 +26,6 @@ services:
       - ./config/local/.env.local
     ports:
       - "5432:5432"
-
 
   nginx:
     image: nginx:latest

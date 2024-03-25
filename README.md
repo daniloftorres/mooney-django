@@ -2,7 +2,7 @@
 
 ## Objetivo
 
-Projeto destinado a estudos e testes, por isso sempre estara em constantes mudanças.
+Projeto destinado a estudos e testes, por isso sempre á em constantes mudanças.
 Consumo de API Rest:
   Autenticação JWT
   Autenticação OAuth2
@@ -13,7 +13,7 @@ Consumo de API Rest:
 
 Gerenciar requisições de um fluxo de venda, partindo da criação da venda, adicionando produtos, selecionando cliente e vendedor, e finalizando na área de finanças onde o usuário poderá ver e gerenciar todas as entradas e parcelas realizadas pelas vendas.
 
-## Tecnologias Utilizadas
+## [Tecnologias Utilizadas](documentation/tecnologias.md)
 
 - Python
 - Django
@@ -263,6 +263,12 @@ São 3 serviços principais rodando:
 - Django
 
 - Postgres
+
+- prometheus
+
+- CAdvisor
+
+- Grafana
 
 ### Configuração de Hosts no Ubuntu
 
