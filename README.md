@@ -35,7 +35,6 @@ Gerenciar requisições de um fluxo de venda, partindo da criação da venda, ad
 - API REST
 - Deploy Continuo
 - Testes Automatizados
-- 
 
 ## Estrutura de Arquivos e Pastas
 
