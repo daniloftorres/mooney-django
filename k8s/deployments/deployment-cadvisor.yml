@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cadvisor
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cadvisor
+  template:
+    metadata:
+      labels:
+        app: cadvisor
+    spec:
+      containers:
+        - name: cadvisor
+          image: google/cadvisor:latest
+          ports:
+            - containerPort: 8080
+          volumeMounts:
+            - name: var-run
+              mountPath: /var/run
+            - name: var-lib-docker
+              mountPath: /var/lib/docker
+          resources:
+            limits:
+              cpu: 500m
+              memory: 256Mi
+            requests:
+              cpu: 250m
+              memory: 128Mi
+      volumes:
+        - name: var-run
+          hostPath:
+            path: /var/run
+        - name: var-lib-docker
+          hostPath:
+            path: /var/lib/docker

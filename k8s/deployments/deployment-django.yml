@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mooney-django
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mooney-django
+  template:
+    metadata:
+      labels:
+        app: mooney-django
+    spec:
+      initContainers:
+        - name: migrate
+          image: danilotorres/mooney-django:1712298976
+          command: ["python", "manage.py", "migrate"]
+          envFrom:
+            - configMapRef:
+                name: django-config
+      containers:
+        - name: mooney-django
+          image: danilotorres/mooney-django:1712298976
+          ports:
+            - containerPort: 8000
+          envFrom:
+            - configMapRef:
+                name: django-config
+          volumeMounts:
+            - name: secret-volume
+              mountPath: /app/mooney/k8s/secrets/secret-django
+              readOnly: true
+      volumes:
+        - name: secret-volume
+          secret:
+            secretName: django-secret-key

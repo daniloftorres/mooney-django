@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: django-config
+  namespace: default
+data:
+  DJANGO_DB_HOST: "postgres"
+  DJANGO_DB_NAME: "mooney_db"
+  DJANGO_DB_USER: "mooney_user"
+  DJANGO_DB_PASSWORD: "mooney_password"
+  SECRET_KEY: "file:/app/mooney/k8s/secrets/secret-django/SECRET_KEY"
