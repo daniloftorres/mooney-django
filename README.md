@@ -439,7 +439,7 @@ curl --location --request POST 'http://api.mooney.com/v1/oauth2/token/' \
 
 Algumas configurações para quem usa o Postman para testar as APIs. O conceito serve para outros programas similares.
 
-- [Configuração básica para uso do Postman](https://github.com/daniloftorres/tutorials/postman/var-enviroment.md)
+- [Configuração básica para uso do Postman](documentation/postman/var-enviroment.md)
 
 1. Criar Variaveis de Ambiente.
 2. Configurar script para quando o request de obtenção do token tiver retorno, capturar o token para savar em nossa variavel de ambiente.
