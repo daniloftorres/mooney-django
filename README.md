@@ -80,7 +80,6 @@ Gerenciar requisições de um fluxo de venda, partindo da criação da venda, ad
 │  │  │  │  │  └── admin.py
 │  │  │  │  │  └── __init__.py
 │  │  │  │  │  └── serializers.py
-│  │  │  │  │  └── tests copy.py
 │  │  │  │  │  └── tests.py
 │  │  │  │  │  └── views_oauth2_client_credentials.py
 │  │  │  │  │  └── views_oauth2_password.py
@@ -108,13 +107,11 @@ Gerenciar requisições de um fluxo de venda, partindo da criação da venda, ad
 │  │  │  │  ├── api/
 │  │  │  │  │  └── __init__.py
 │  │  │  │  │  ├── v1/
-│  │  │  │  │  │  └── bk-tes.py
 │  │  │  │  │  │  └── __init__.py
 │  │  │  │  │  │  └── serializers.py
 │  │  │  │  │  │  ├── services/
 │  │  │  │  │  │  │  └── services.py
 │  │  │  │  │  │  │  └── views.py
-│  │  │  │  │  │  └── tests-cp.py
 │  │  │  │  │  │  └── tests.py
 │  │  │  │  │  │  └── views.py
 │  │  │  │  └── apps.py
@@ -133,7 +130,6 @@ Gerenciar requisições de um fluxo de venda, partindo da criação da venda, ad
 │  │  │  │  │  └── admin.py
 │  │  │  │  │  └── __init__.py
 │  │  │  │  │  └── serializers.py
-│  │  │  │  │  └── tests copy.py
 │  │  │  │  │  └── tests.py
 │  │  │  │  │  └── views_oauth2_client_credentials.py
 │  │  │  │  │  └── views_oauth2_password.py
@@ -165,6 +161,7 @@ Gerenciar requisições de um fluxo de venda, partindo da criação da venda, ad
 │  │  │  └── models.py
 │  │  │  └── tests.py
 │  ├── config/
+│  │  └── django-config.yaml
 │  │  ├── local/
 │  │  │  └── Dockerfile
 │  │  │  └── entrypoint.sh
@@ -176,6 +173,7 @@ Gerenciar requisições de um fluxo de venda, partindo da criação da venda, ad
 │  │  │  ├── postgres/
 │  │  │  │  └── my-pg_hba.conf
 │  │  │  │  └── my-postgresql.conf
+│  │  │  │  └── pg_hba.conf
 │  │  │  │  └── postgresql.conf
 │  │  │  ├── postgresql/
 │  │  │  │  ├── my-pg_hba.conf/
@@ -192,8 +190,37 @@ Gerenciar requisições de um fluxo de venda, partindo da criação da venda, ad
 │  │  │  └── *
 │  └── docker-compose.local.yml
 │  └── docker-compose.production.yml
-│  ├── k8s_blocked/
-│  │  └── deployment.yaml
+│  ├── k8s/
+│  │  ├── configmaps/
+│  │  │  └── configmap-django.yaml
+│  │  │  └── configmap-nginx.yaml
+│  │  │  └── configmap-postgres.yaml
+│  │  │  └── configmap-prometheus.yaml
+│  │  ├── cronjobs/
+│  │  │  └── *
+│  │  ├── deployments/
+│  │  │  └── deployment-cadvisor.yml
+│  │  │  └── deployment-django.yml
+│  │  │  └── deployment-grafana.yml
+│  │  │  └── deployment-nginx.yml
+│  │  │  └── deployment-postgres.yml
+│  │  │  └── deployment-prometheus.yml
+│  │  ├── ingresses/
+│  │  │  └── ingress.yaml
+│  │  ├── jobs/
+│  │  │  └── *
+│  │  ├── secrets/
+│  │  │  └── secret-django.yaml
+│  │  ├── services/
+│  │  │  └── service-cadvisor.yaml
+│  │  │  └── service-django.yaml
+│  │  │  └── service-grafana.yaml
+│  │  │  └── service-nginx.yaml
+│  │  │  └── service-postgres.yaml
+│  │  │  └── service-prometheus.yaml
+│  │  ├── volumes/
+│  │  │  └── storageclass.yaml
+│  │  │  └── volume-nginx.yaml
 │  └── manage.py
 │  ├── mooney/
 │  │  └── asgi.py
@@ -222,6 +249,11 @@ Gerenciar requisições de um fluxo de venda, partindo da criação da venda, ad
 │  │  └── wsgi.py
 │  └── prometheus.yml
 │  └── README.md
+│  ├── tmp/
+│  ├── tutorials/
+│  │  ├── postman/
+│  │  │  └── var-enviroment.md
+
 ```
 
 ## Passos para Executar o Projeto Localmente
